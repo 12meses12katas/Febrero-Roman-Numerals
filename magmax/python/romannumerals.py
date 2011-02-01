@@ -11,13 +11,22 @@ class ArabianToRoman:
         self.arabian = arabian
         self.translated = ""
 
-        self.__apply (10, "X")
-        self.__apply (9, "IX")
-        self.__apply (5, "V")
-        self.__apply (4, "IV")
-        self.__apply (1, "I")
+        self.__apply_all ()
+
 
         return self.translated
+
+    def __apply_all (self):
+        equivalences = [
+            (10, 'X'),
+            (9, 'IX'),
+            (5, 'V'),
+            (4, 'IV'),
+            (1, 'I')
+            ]
+
+        for k, v in equivalences:
+            self.__apply (k, v)
 
     def __apply (self, arabian, roman):
         while self.arabian >= arabian:
