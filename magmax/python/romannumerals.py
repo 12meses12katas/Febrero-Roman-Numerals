@@ -3,6 +3,7 @@
 
 class ArabianToRoman:
     _EQUIVALENCES = [
+        (400, 'CD'),
         (100, 'C'),
         (90, 'XC'),
         (50, 'L'),
