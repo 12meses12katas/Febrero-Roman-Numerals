@@ -4,6 +4,11 @@
 class ArabianToRoman:
     def translate(self, roman):
         result = ""
+
+        if roman == 5:
+            roman -= 5
+            result += "V"
+
         if roman == 4:
             roman = 0
             result += "IV"
