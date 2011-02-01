@@ -20,6 +20,7 @@ class ArabianToRomanTest (unittest.TestCase):
                11:"XI",
                14:"XIV",
                15:"XV",
+               19:"XIX",
                }
 
     def setUp (self):
