@@ -5,7 +5,7 @@ class ArabianToRoman:
     def translate(self, roman):
         result = ""
 
-        if roman == 5:
+        if roman >= 5:
             roman -= 5
             result += "V"
 
