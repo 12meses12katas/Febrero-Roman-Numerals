@@ -8,7 +8,7 @@ from romannumerals import ArabianToRoman
 class ArabianToRomanTest (unittest.TestCase):
     def test_translate_1 (self):
         sut = ArabianToRoman()
-        self.assertEqual(1, sut.translate("1"))
+        self.assertEqual("I", sut.translate(1))
 
 
 if __name__ == '__main__':
