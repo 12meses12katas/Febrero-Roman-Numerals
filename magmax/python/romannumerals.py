@@ -3,25 +3,23 @@
 
 class ArabianToRoman:
 
-    def translate(self, roman):
-        result = ""
+    def __init__(self):
+        self.arabian = 0
+        self.translated = ""
 
-        if roman >=10:
-            roman -= 10
-            result += "X"
+    def translate(self, arabian):
+        self.arabian = arabian
+        self.translated = ""
 
-        if roman == 9:
-            roman -= 9
-            result += "IX"
+        self.__apply (10, "X")
+        self.__apply (9, "IX")
+        self.__apply (5, "V")
+        self.__apply (4, "IV")
+        self.__apply (1, "I")
 
-        if roman >= 5:
-            roman -= 5
-            result += "V"
+        return self.translated
 
-        if roman == 4:
-            roman -= 4
-            result += "IV"
-
-        result += "I"*roman
-
-        return result
+    def __apply (self, arabian, roman):
+        while self.arabian >= arabian:
+            self.arabian -= arabian
+            self.translated += roman
