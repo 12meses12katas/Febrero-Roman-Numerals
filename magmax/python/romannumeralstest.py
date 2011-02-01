@@ -10,6 +10,9 @@ class ArabianToRomanTest (unittest.TestCase):
         sut = ArabianToRoman()
         self.assertEqual("I", sut.translate(1))
 
+    def test_translate_2 (self):
+        sut = ArabianToRoman()
+        self.assertEqual("II", sut.translate(2))
 
 if __name__ == '__main__':
     unittest.main()

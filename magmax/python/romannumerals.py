@@ -3,4 +3,4 @@
 
 class ArabianToRoman:
     def translate(self, roman):
-        return "I"
+        return "I"*roman
