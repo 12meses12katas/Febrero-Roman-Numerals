@@ -6,17 +6,18 @@ import unittest
 from romannumerals import ArabianToRoman
 
 class ArabianToRomanTest (unittest.TestCase):
+
+    NUMBERS = {1:"I",
+               2:"II",
+               3:"III",
+               }
+
     def setUp (self):
         self.sut = ArabianToRoman()
 
-    def test_translate_1 (self):
-        self.assertEqual("I", self.sut.translate(1))
-
-    def test_translate_2 (self):
-        self.assertEqual("II", self.sut.translate(2))
-
-    def test_translate_3 (self):
-        self.assertEqual("III", self.sut.translate(3))
+    def test_translate (self):
+        for key in self.NUMBERS:
+            self.assertEqual(self.NUMBERS[key], self.sut.translate(key))
 
 if __name__ == '__main__':
     unittest.main()
