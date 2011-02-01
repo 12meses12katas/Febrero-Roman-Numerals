@@ -29,6 +29,9 @@ class ArabianToRomanTest (unittest.TestCase):
                94:"XCIV",
                119:"CXIX",
                499:"CDXCIX",
+               572:"DLXXII",
+               1998:"MCMXCVIII",
+               2751:"MMDCCLI",
                }
 
     def setUp (self):
