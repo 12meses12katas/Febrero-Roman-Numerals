@@ -24,12 +24,10 @@ class RomanNumerals {
     $this->validateIntegerInput($number);
     $romanNumber = "";
     $numerals = $this->getNumerals();
-    while ($number > 0) {
-      foreach ($numerals as $intValue => $numeral) {
-        if ($number >= $intValue) {
-          $romanNumber .= $numeral;
-          $number -= $intValue;
-        }
+    foreach ($numerals as $intValue => $numeral) {
+      while ($number >= $intValue) {
+        $romanNumber .= $numeral;
+        $number -= $intValue;
       }
     }
     return $romanNumber;
@@ -60,7 +58,7 @@ class RomanNumerals {
       throw new Exception("Won't convert integers bigger than MMM");
     }
   }
-  
+
   protected function processSubstractiveNumerals($number) {
     $substraction = 0;
     foreach ($this->substractiveNumerals as $numeral) {
@@ -70,7 +68,7 @@ class RomanNumerals {
     }
     return $substraction;
   }
-  
+
   protected function processAdditiveNumerals($number) {
     $sum = 0;
     for ($i = 0, $max = strlen($number); $i < $max; $i++) {
