@@ -2,6 +2,13 @@
 # -*- coding:utf-8; tab-width:4; mode:python -*-
 
 class ArabianToRoman:
+    _EQUIVALENCES = [
+        (10, 'X'),
+        (9, 'IX'),
+        (5, 'V'),
+        (4, 'IV'),
+        (1, 'I')
+        ]
 
     def __init__(self):
         self.arabian = 0
@@ -13,19 +20,10 @@ class ArabianToRoman:
 
         self.__apply_all ()
 
-
         return self.translated
 
     def __apply_all (self):
-        equivalences = [
-            (10, 'X'),
-            (9, 'IX'),
-            (5, 'V'),
-            (4, 'IV'),
-            (1, 'I')
-            ]
-
-        for k, v in equivalences:
+        for k, v in self._EQUIVALENCES:
             self.__apply (k, v)
 
     def __apply (self, arabian, roman):
