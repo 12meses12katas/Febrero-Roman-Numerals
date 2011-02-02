@@ -22,17 +22,17 @@ object Roman {
 class RomanIntExtensions(delegate : Int) {
 
   def to_roman = {
-    def to_roman(x:Int, candidates:List[Int]):String = {
-      candidates match {
-        case Nil => ""
-        case divisor :: tl if (x / divisor > 0) => {
-          val (quotient, module) = ( x / divisor, x % divisor)
-          Roman.FROM_DEC(divisor) * quotient + to_roman(module, tl)
-        }
-        case _ :: tl => to_roman(x, tl)
+    val roman_and_remaining = Roman.DIVISOR_CANDIDATES.foldLeft(("", delegate)) {
+      (accumulator_and_remaining, candidate) => {
+        val (accumulator, remaining) = accumulator_and_remaining
+        if (remaining / candidate > 0) {
+          val (quotient, module) = ( remaining / candidate, remaining % candidate)
+          (accumulator + Roman.FROM_DEC(candidate) * quotient, module)
+        } else
+          (accumulator, remaining)
       }
     }
-    to_roman(delegate, Roman.DIVISOR_CANDIDATES)
+    roman_and_remaining._1
   }
 }
 
@@ -40,14 +40,13 @@ class RomanStringExtensions(delegate : String) {
 
   def from_roman:Int = {
     val result:Tuple2[Int,Int] = delegate.reverse.foldLeft((0, 0)) {
-      (accumulator_and_previous, roman) => accumulator_and_previous match {
-        case (accumulator, previous) => {
-          val current = Roman.TO_DEC(roman.toString)
-          if(current < previous)
-            (accumulator - current, current)
-          else
-            (accumulator + current, current)
-        }
+      (accumulator_and_previous, roman) => {
+        val (accumulator, previous) = accumulator_and_previous
+        val current = Roman.TO_DEC(roman.toString)
+        if(current < previous)
+          (accumulator - current, current)
+        else
+          (accumulator + current, current)
       }
     }
     result._1
