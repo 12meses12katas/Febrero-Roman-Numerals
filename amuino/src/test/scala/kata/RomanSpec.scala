@@ -19,7 +19,8 @@ object RomanSpec extends Specification with DataTables {
       3         ! "III"   |
       4         ! "IV"    |
       5         ! "V"     |
-      1978      ! "MCMLXXVIII" | {
+      1978      ! "MCMLXXVIII" |
+      1999      ! "MCMXCIX" | {
         (decimal, roman) => decimal.to_roman must_== roman
       }
     }
@@ -33,7 +34,8 @@ object RomanSpec extends Specification with DataTables {
       3         ! "III"   |
       4         ! "IV"    |
       5         ! "V"     |
-      1978      ! "MCMLXXVIII" | {
+      1978      ! "MCMLXXVIII" |
+      1999      ! "MCMXCIX" | {
         (decimal, roman) => roman.from_roman must_== decimal
       }
     }
