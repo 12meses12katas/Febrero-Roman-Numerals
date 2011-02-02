@@ -27,7 +27,7 @@ class RomanIntExtensions(delegate : Int) {
         case Nil => ""
         case divisor :: tl if (x / divisor > 0) => {
           val (quotient, module) = ( x / divisor, x % divisor)
-          Roman.FROM_DEC(divisor) * quotient + to_roman(module, candidates)
+          Roman.FROM_DEC(divisor) * quotient + to_roman(module, tl)
         }
         case _ :: tl => to_roman(x, tl)
       }
