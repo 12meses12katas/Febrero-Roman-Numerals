@@ -59,7 +59,10 @@ class RomanToArabian:
         prev = ''
         for char in roman:
             if char == 'X':
-                result += 8
+                if prev == 'I':
+                    result += 8
+                else:
+                    result += 10
             if char == 'V':
                 if prev =='I':
                     result += 3
