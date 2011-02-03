@@ -64,6 +64,8 @@ class RomanToArabianTest (unittest.TestCase):
                94: "XCIV",
                119: "CXIX",
                499: "CDXCIX",
+               572: "DLXXII",
+               1998: "MCMXCVIII",
         }
     def setUp (self):
         self.sut = RomanToArabian()
