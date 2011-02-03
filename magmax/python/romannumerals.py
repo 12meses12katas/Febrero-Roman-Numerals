@@ -83,7 +83,7 @@ class RomanToArabian:
         else:
             self.arabian +=  self.__value_of(current)
             if prev =='I':
-                self.arabian -= 2
+                self.arabian -= 2*self.__value_of('I')
 
     def __value_of (self, roman):
         for k,v in self._EQUIVALENCES:
