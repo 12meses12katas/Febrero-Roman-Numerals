@@ -43,6 +43,7 @@ class ArabianToRomanTest (unittest.TestCase):
 
 class RomanToArabianTest (unittest.TestCase):
     NUMBERS = {1: "I",
+               2: "II",
         }
     def setUp (self):
         self.sut = RomanToArabian()
