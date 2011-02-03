@@ -55,9 +55,11 @@ class ArabianToRoman:
 
 class RomanToArabian:
     _EQUIVALENCES = [
+        ('L',50),
         ('X',10),
         ('V',5),
-        ('I',1)
+        ('I',1),
+        ('', 0),
         ]
     def __init__(self):
         self.roman = ''
@@ -78,12 +80,12 @@ class RomanToArabian:
             prev = each
 
     def __apply (self, prev, current):
-        if current == 'I':
-            self.arabian +=  self.__value_of('I')
-        else:
-            self.arabian +=  self.__value_of(current)
-            if prev =='I':
-                self.arabian -= 2*self.__value_of('I')
+        self.arabian +=  self.__value_of(current)
+        if self.__must_substract(prev, current):
+            self.arabian -= 2*self.__value_of(prev)
+
+    def __must_substract (self, prev, current):
+        return self.__value_of(prev) < self.__value_of(current)
 
     def __value_of (self, roman):
         for k,v in self._EQUIVALENCES:
