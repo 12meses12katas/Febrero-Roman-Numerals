@@ -55,6 +55,7 @@ class ArabianToRoman:
 
 class RomanToArabian:
     _EQUIVALENCES = [
+        ('D',500),
         ('C',100),
         ('L',50),
         ('X',10),
