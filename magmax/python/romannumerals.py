@@ -57,6 +57,8 @@ class RomanToArabian:
     def translate(self, roman):
         result = 0
         for char in roman:
+            if char == 'V':
+                result += 3
             if char == 'I':
                 result += 1
         return result
