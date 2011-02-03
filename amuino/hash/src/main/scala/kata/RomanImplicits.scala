@@ -25,11 +25,8 @@ class RomanIntExtensions(delegate : Int) {
     val roman_and_remaining = Roman.DIVISOR_CANDIDATES.foldLeft(("", delegate)) {
       (accumulator_and_remaining, candidate) => {
         val (accumulator, remaining) = accumulator_and_remaining
-        if (remaining / candidate > 0) {
-          val (quotient, module) = ( remaining / candidate, remaining % candidate)
-          (accumulator + Roman.FROM_DEC(candidate) * quotient, module)
-        } else
-          (accumulator, remaining)
+        val (quotient, module) = ( remaining / candidate, remaining % candidate)
+        (accumulator + Roman.FROM_DEC(candidate) * quotient, module)
       }
     }
     roman_and_remaining._1
