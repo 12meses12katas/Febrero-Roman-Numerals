@@ -69,17 +69,20 @@ class RomanToArabian:
 
     def __translate(self):
         prev = ''
-        for char in self.roman:
-            if char == 'X':
-                if prev == 'I':
-                    self.arabian += 8
-                else:
-                    self.arabian += 10
-            if char == 'V':
-                if prev =='I':
-                    self.arabian += 3
-                else:
-                    self.arabian += 5
-            if char == 'I':
-                self.arabian += 1
-            prev = char
+        for each in self.roman:
+            self.__apply (prev, each)
+            prev = each
+
+    def __apply (self, prev, current):
+        if current == 'X':
+            if prev == 'I':
+                self.arabian += 8
+            else:
+                self.arabian += 10
+        if current == 'V':
+            if prev =='I':
+                self.arabian += 3
+            else:
+                self.arabian += 5
+        if current == 'I':
+            self.arabian += 1
