@@ -1,1 +1,1 @@
-puts "probando git, sigo probando git"
+puts "mañana hago la kata que el git esta controlao"
