@@ -66,7 +66,6 @@ class RomanToArabian:
 
         return self.arabian
 
-
     def __translate(self):
         prev = ''
         for each in self.roman:
@@ -75,14 +74,12 @@ class RomanToArabian:
 
     def __apply (self, prev, current):
         if current == 'X':
+            self.arabian += 10
             if prev == 'I':
-                self.arabian += 8
-            else:
-                self.arabian += 10
+                self.arabian -= 2
         if current == 'V':
+            self.arabian += 5
             if prev =='I':
-                self.arabian += 3
-            else:
-                self.arabian += 5
+                self.arabian -= 2
         if current == 'I':
             self.arabian += 1
