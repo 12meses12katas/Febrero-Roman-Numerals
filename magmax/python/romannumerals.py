@@ -54,21 +54,32 @@ class ArabianToRoman:
 
 
 class RomanToArabian:
+    def __init__(self):
+        self.roman = ''
+        self.arabian = 0
+
     def translate(self, roman):
-        result = 0
+        self.arabian = 0
+        self.roman = roman
+
+        self.__translate()
+
+        return self.arabian
+
+
+    def __translate(self):
         prev = ''
-        for char in roman:
+        for char in self.roman:
             if char == 'X':
                 if prev == 'I':
-                    result += 8
+                    self.arabian += 8
                 else:
-                    result += 10
+                    self.arabian += 10
             if char == 'V':
                 if prev =='I':
-                    result += 3
+                    self.arabian += 3
                 else:
-                    result += 5
+                    self.arabian += 5
             if char == 'I':
-                result += 1
+                self.arabian += 1
             prev = char
-        return result
