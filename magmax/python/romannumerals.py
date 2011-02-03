@@ -64,28 +64,32 @@ class RomanToArabian:
     def __init__(self):
         self.roman = ''
         self.arabian = 0
+        self.prev = ''
+        self.current = None
 
     def translate(self, roman):
         self.arabian = 0
         self.roman = roman
+        self.prev = ''
+        self.current = None
 
         self.__translate()
 
         return self.arabian
 
     def __translate(self):
-        prev = ''
         for each in self.roman:
-            self.__apply (prev, each)
-            prev = each
+            self.current = each
+            self.__apply_char ()
+            self.prev = each
 
-    def __apply (self, prev, current):
-        self.arabian +=  self.__value_of(current)
-        if self.__must_substract(prev, current):
-            self.arabian -= 2*self.__value_of(prev)
+    def __apply_char (self):
+        self.arabian +=  self.__value_of(self.current)
+        if self.__must_substract():
+            self.arabian -= 2*self.__value_of(self.prev)
 
-    def __must_substract (self, prev, current):
-        return self.__value_of(prev) < self.__value_of(current)
+    def __must_substract (self):
+        return self.__value_of(self.prev) < self.__value_of(self.current)
 
     def __value_of (self, roman):
         for k,v in self._EQUIVALENCES:
