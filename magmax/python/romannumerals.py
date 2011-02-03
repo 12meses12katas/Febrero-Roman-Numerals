@@ -12,16 +12,6 @@ class ArabianToRoman:
         (1, 'I')
         ]
 
-    _EQUIVALENCES_MULTI = [
-        (900, 'CM'),
-        (400, 'CD'),
-        (90, 'XC'),
-        (40, 'XL'),
-        (9, 'IX'),
-        (4, 'IV'),
-        (0, ''),
-        ]
-
     def __init__(self):
         self.arabian = 0
         self.translated = ""
@@ -58,4 +48,12 @@ class ArabianToRoman:
         return self._EQUIVALENCES[pos]
 
     def __multiple_at (self, pos):
-        return self._EQUIVALENCES_MULTI[pos]
+        if pos+2 >= len(self._EQUIVALENCES):
+            return 100000, ''
+        ms = self._EQUIVALENCES[pos]
+        ls = None
+        if pos % 2:
+            ls = self._EQUIVALENCES[pos+2]
+        else:
+            ls = self._EQUIVALENCES[pos+1]
+        return ms[0]-ls[0], ls[1]+ms[1]
