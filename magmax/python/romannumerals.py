@@ -53,5 +53,5 @@ class ArabianToRoman:
 
     def __multiple_at (self, pos):
         ms = self.__single_at(pos)
-        ls = self.__single_at(pos + 1 + (pos%2))
+        ls = self.__single_at(pos + 2 - (pos%2))
         return abs(ms[0]-ls[0]), ls[1]+ms[1]
