@@ -19,6 +19,7 @@ class ArabianToRoman:
         (40, 'XL'),
         (9, 'IX'),
         (4, 'IV'),
+        (0, ''),
         ]
 
     def __init__(self):
@@ -45,8 +46,6 @@ class ArabianToRoman:
             self.__add_value ( arabian, roman)
 
     def __apply_multiletter (self, pos):
-        if pos >= len (self._EQUIVALENCES_MULTI):
-            return
         arabian, roman = self._EQUIVALENCES_MULTI[pos]
         if self.arabian >= arabian:
             self.__add_value ( arabian, roman)
