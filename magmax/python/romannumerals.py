@@ -51,3 +51,8 @@ class ArabianToRoman:
         ms = self.__single_at(pos)
         ls = self.__single_at(pos + 2 - (pos%2))
         return abs(ms[0]-ls[0]), ls[1]+ms[1]
+
+
+class RomanToArabian:
+    def translate(self, roman):
+        return 1

@@ -3,7 +3,7 @@
 
 import unittest
 
-from romannumerals import ArabianToRoman
+from romannumerals import ArabianToRoman, RomanToArabian
 
 class ArabianToRomanTest (unittest.TestCase):
 
@@ -40,6 +40,16 @@ class ArabianToRomanTest (unittest.TestCase):
     def test_translate (self):
         for key in self.NUMBERS:
             self.assertEqual(self.NUMBERS[key], self.sut.translate(key))
+
+class RomanToArabianTest (unittest.TestCase):
+    NUMBERS = {1: "I",
+        }
+    def setUp (self):
+        self.sut = RomanToArabian()
+
+    def test_translate (self):
+        for key in self.NUMBERS:
+            self.assertEqual(key, self.sut.translate(self.NUMBERS[key]))
 
 if __name__ == '__main__':
     unittest.main()
