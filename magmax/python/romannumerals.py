@@ -37,19 +37,25 @@ class ArabianToRoman:
     def __apply_all (self):
         for pos in xrange(len(self._EQUIVALENCES)):
             last_value = self.arabian
-            k,v = self._EQUIVALENCES[pos]
-            self.__apply_singleletter (k, v)
+            self.__apply_singleletter (pos)
             self.__apply_multiletter (pos)
 
-    def __apply_singleletter (self, arabian, roman):
+    def __apply_singleletter (self, pos):
+        arabian, roman = self.__single_at(pos)
         while self.arabian >= arabian:
             self.__add_value ( arabian, roman)
 
     def __apply_multiletter (self, pos):
-        arabian, roman = self._EQUIVALENCES_MULTI[pos]
+        arabian, roman = self.__multiple_at(pos)
         if self.arabian >= arabian:
             self.__add_value ( arabian, roman)
 
     def __add_value ( self, arabian, roman ):
         self.arabian -= arabian
         self.translated += roman
+
+    def __single_at (self, pos):
+        return self._EQUIVALENCES[pos]
+
+    def __multiple_at (self, pos):
+        return self._EQUIVALENCES_MULTI[pos]
