@@ -12,6 +12,8 @@ class ArabianToRoman:
         (1, 'I')
         ]
 
+    _INFINITE = (3000, '')
+
     def __init__(self):
         self.arabian = 0
         self.translated = ""
@@ -45,15 +47,11 @@ class ArabianToRoman:
         self.translated += roman
 
     def __single_at (self, pos):
+        if pos >= len (self._EQUIVALENCES):
+            return self._INFINITE
         return self._EQUIVALENCES[pos]
 
     def __multiple_at (self, pos):
-        if pos+2 >= len(self._EQUIVALENCES):
-            return 100000, ''
-        ms = self._EQUIVALENCES[pos]
-        ls = None
-        if pos % 2:
-            ls = self._EQUIVALENCES[pos+2]
-        else:
-            ls = self._EQUIVALENCES[pos+1]
-        return ms[0]-ls[0], ls[1]+ms[1]
+        ms = self.__single_at(pos)
+        ls = self.__single_at(pos + 1 + (pos%2))
+        return abs(ms[0]-ls[0]), ls[1]+ms[1]
