@@ -1,10 +1,11 @@
 var RomanNumber=function(value) {
+	var romanNumeralsByValue={
+		1:'I',
+		5:'V',
+		10:'X'
+	};
+	
 	this.toString=function() {
-		if(value==1)
-			return "I";
-		if(value==5)
-			return "V";
-		if(value==10)
-			return "X";
+		return romanNumeralsByValue[value];
 	};
 };

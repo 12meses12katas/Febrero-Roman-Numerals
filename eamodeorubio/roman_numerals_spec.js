@@ -1,15 +1,18 @@
-describe("RomanNumber", function() {
-	describe("can convert from arabic to roman", function() {
-		it("1 is converted to I", function() {
-			expect(new RomanNumber(1).toString()).toEqual("I");
-		});
+describe("RomanNumber", function(){
+	describe("can convert from arabic to roman", function(){
+		var appendArabicToRomanConversionSpec = function(arabicNumber, expectedRomanNumber){
+			it(arabicNumber + " is converted to " + expectedRomanNumber, function(){
+				expect(new RomanNumber(arabicNumber).toString()).toEqual(expectedRomanNumber);
+			});
+		};
 		
-		it("5 is converted to V", function() {
-			expect(new RomanNumber(5).toString()).toEqual("V");
-		});
-		
-		it("10 is converted to X", function() {
-			expect(new RomanNumber(10).toString()).toEqual("X");
-		});
+		var sampleArabicToRomanEquivalences = [
+			1,		'I',
+			5,		'V',
+			10,		'X'
+		];
+		for (var i = 0; i < sampleArabicToRomanEquivalences.length; i += 2) 
+			appendArabicToRomanConversionSpec(sampleArabicToRomanEquivalences[i]
+																			, sampleArabicToRomanEquivalences[i + 1]);
 	});
 });
