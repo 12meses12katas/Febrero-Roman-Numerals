@@ -1,35 +1,32 @@
 var RomanNumber=function(value) {
-	var romanNumeralsByValue={
-		1:'I',
-		5:'V',
-		10:'X',
-		50:'L',
-		100:'C',
-		500:'D',
-		1000:'M'
-	};
+	var romanNumeralsByValue=[
+		0, '',
+		1, 'I',
+		5, 'V',
+		10, 'X',
+		50, 'L',
+		100, 'C',
+		500, 'D',
+		1000, 'M'
+	];
+	var romanNumeralsCount=romanNumeralsByValue.length;
+	
 	value=Math.abs(value);
 	this.toString=function() {
-		var r=romanNumeralsByValue[value];
-		if(r)
-			return r;
-		
-		// 50 / 10 / 5
-		if(Math.abs(value-50)<(Math.abs(value-10-5)))
-			return new RomanNumber(value-50).toString()+'L';
-		if(value>10)
-			return 'X'+new RomanNumber(value-10).toString();
-		
-		// 10 / 5 / 1
-		if(Math.abs(value-10)<(Math.abs(value-5-1)))
-			return new RomanNumber(value-10).toString()+'X';
-		if(value>5)
-			return 'V'+new RomanNumber(value-5).toString();
-		
-		// 5 / 1 / 0
-		if(Math.abs(value-5)<Math.abs(value-1-0))
-			return new RomanNumber(value-5).toString()+'V';
-		if(value>1)
-			return 'I'+new RomanNumber(value-1).toString();
+		for(var i=(romanNumeralsCount-1);i>=0;i-=2) {
+			var romanNumeral=romanNumeralsByValue[i];
+			var arabicNumeral=romanNumeralsByValue[i-1];
+			if(value==arabicNumeral)
+				return romanNumeral;
+				
+			var immediatelyLowerRomanNumeral=romanNumeralsByValue[i-2];
+			var immediatelyLowerArabicNumeral=romanNumeralsByValue[i-3];
+			var minimumIncrement=romanNumeralsByValue[i-5];
+			
+			if(Math.abs(value-arabicNumeral)<Math.abs(value-immediatelyLowerArabicNumeral-minimumIncrement))
+				return new RomanNumber(value-arabicNumeral).toString()+romanNumeral;
+			if(value>immediatelyLowerArabicNumeral)
+				return immediatelyLowerRomanNumeral+new RomanNumber(value-immediatelyLowerArabicNumeral).toString();
+		}
 	};
 };
