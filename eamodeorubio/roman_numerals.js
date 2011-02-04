@@ -4,5 +4,7 @@ var RomanNumber=function(value) {
 			return "I";
 		if(value==5)
 			return "V";
+		if(value==10)
+			return "X";
 	};
 };

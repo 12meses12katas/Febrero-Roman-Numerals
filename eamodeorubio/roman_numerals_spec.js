@@ -7,5 +7,9 @@ describe("RomanNumber", function() {
 		it("5 is converted to V", function() {
 			expect(new RomanNumber(5).toString()).toEqual("V");
 		});
+		
+		it("10 is converted to X", function() {
+			expect(new RomanNumber(10).toString()).toEqual("X");
+		});
 	});
 });
