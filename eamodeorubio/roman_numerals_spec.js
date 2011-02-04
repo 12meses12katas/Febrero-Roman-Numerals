@@ -9,7 +9,11 @@ describe("RomanNumber", function(){
 		var sampleArabicToRomanEquivalences = [
 			1,		'I',
 			5,		'V',
-			10,		'X'
+			10,		'X',
+			50,		'L',
+			100,	'C',
+			500,	'D',
+			1000,	'M'
 		];
 		for (var i = 0; i < sampleArabicToRomanEquivalences.length; i += 2) 
 			appendArabicToRomanConversionSpec(sampleArabicToRomanEquivalences[i]
