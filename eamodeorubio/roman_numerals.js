@@ -13,9 +13,6 @@ var RomanNumber=function(value) {
 		var r=romanNumeralsByValue[value];
 		if(r)
 			return r;
-		if(value==2)
-			return 'II';
-		if(value==3)
-			return 'III';
+		return 'I'+new RomanNumber(value-1).toString();
 	};
 };
