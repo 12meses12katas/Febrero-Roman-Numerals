@@ -15,5 +15,7 @@ var RomanNumber=function(value) {
 			return r;
 		if(value==2)
 			return 'II';
+		if(value==3)
+			return 'III';
 	};
 };
