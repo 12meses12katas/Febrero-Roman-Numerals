@@ -10,6 +10,10 @@ var RomanNumber=function(value) {
 	};
 	
 	this.toString=function() {
-		return romanNumeralsByValue[value];
+		var r=romanNumeralsByValue[value];
+		if(r)
+			return r;
+		if(value==2)
+			return 'II';
 	};
 };

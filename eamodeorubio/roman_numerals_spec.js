@@ -8,6 +8,7 @@ describe("RomanNumber", function(){
 		
 		var sampleArabicToRomanEquivalences = [
 			1,		'I',
+			2,		'II',
 			5,		'V',
 			10,		'X',
 			50,		'L',
