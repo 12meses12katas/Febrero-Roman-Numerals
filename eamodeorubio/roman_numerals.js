@@ -23,7 +23,7 @@ var RomanNumber=function(value) {
 			var immediatelyLowerArabicNumeral=romanNumeralsByValue[i-3];
 			var minimumIncrement=romanNumeralsByValue[i-5];
 			
-			if(Math.abs(value-arabicNumeral)<Math.abs(value-immediatelyLowerArabicNumeral-minimumIncrement))
+			if(i<10&&Math.abs(value-arabicNumeral)<Math.abs(value-immediatelyLowerArabicNumeral-minimumIncrement))
 				return new RomanNumber(value-arabicNumeral).toString()+romanNumeral;
 			if(value>immediatelyLowerArabicNumeral)
 				return immediatelyLowerRomanNumeral+new RomanNumber(value-immediatelyLowerArabicNumeral).toString();

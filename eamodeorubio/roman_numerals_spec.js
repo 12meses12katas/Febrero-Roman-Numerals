@@ -25,10 +25,17 @@ describe("RomanNumber", function(){
 			19,		'XIX',
 			20,		'XX',
 			40,		'XL',
+			49,		'XLIX',
 			50,		'L',
+			99,		'XCIX',
 			100,	'C',
 			500,	'D',
-			1000,	'M'
+			999,	'CMXCIX',
+			1000,	'M',
+			1999, 'MCMXCIX',
+			2000, 'MM',
+			2999, 'MMCMXCIX',
+			3000, 'MMM'
 		];
 		for (var i = 0; i < sampleArabicToRomanEquivalences.length; i += 2) 
 			appendArabicToRomanConversionSpec(sampleArabicToRomanEquivalences[i]
