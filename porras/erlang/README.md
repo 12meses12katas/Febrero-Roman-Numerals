@@ -1,6 +1,6 @@
 # Erlang implementation of February http://www.12meses12katas.com/
 
-Only the first part is done (arabic to roman). It's my first non-completely-trivial Erlang code so it's far from perfect and actually not very readable. Al least it's short ;)
+It's my first non-completely-trivial Erlang code so it's far from perfect and actually not very readable. At least it's short, especially the arabic to romans part ;)
 
 Tested with Erlang/OTP R13B04
 
@@ -18,5 +18,7 @@ To play with the methods:
     {ok,romans}
     2> romans:arabic_to_roman(1127).
     "MCXXVII"
+    3> romans:roman_to_arabic("MMCXLVII").
+    2147
 
 Exit the shell with ^G and then q
