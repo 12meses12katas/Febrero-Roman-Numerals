@@ -18,15 +18,18 @@ var RomanNumber=function(value) {
 			var arabicNumeral=romanNumeralsByValue[i-1];
 			if(value==arabicNumeral)
 				return romanNumeral;
-				
-			var immediatelyLowerRomanNumeral=romanNumeralsByValue[i-2];
-			var immediatelyLowerArabicNumeral=romanNumeralsByValue[i-3];
-			var minimumIncrement=romanNumeralsByValue[i-5];
-			
-			if(i<10&&Math.abs(value-arabicNumeral)<Math.abs(value-immediatelyLowerArabicNumeral-minimumIncrement))
-				return new RomanNumber(value-arabicNumeral).toString()+romanNumeral;
-			if(value>immediatelyLowerArabicNumeral)
-				return immediatelyLowerRomanNumeral+new RomanNumber(value-immediatelyLowerArabicNumeral).toString();
+			if(value>arabicNumeral)
+				return romanNumeral+new RomanNumber(value-arabicNumeral).toString();
+			if (i >= 5) {
+				var substractiveRomanNumeral=romanNumeralsByValue[i-2];
+				var substractiveArabicNumeral=romanNumeralsByValue[i-3];
+				if((arabicNumeral-substractiveArabicNumeral)<=substractiveArabicNumeral) {
+					substractiveRomanNumeral=romanNumeralsByValue[i-4];
+					substractiveArabicNumeral=romanNumeralsByValue[i-5];
+				}
+				if(value>=(arabicNumeral-substractiveArabicNumeral))
+					return substractiveRomanNumeral+romanNumeral+new RomanNumber(value-(arabicNumeral-substractiveArabicNumeral)).toString();
+			}
 		}
 	};
 };
