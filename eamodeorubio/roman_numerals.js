@@ -1,6 +1,5 @@
 var RomanNumber=function(value) {
 	var romanNumeralsByValue=[
-		0, '',
 		1, 'I',
 		5, 'V',
 		10, 'X',
@@ -11,24 +10,25 @@ var RomanNumber=function(value) {
 	];
 	var romanNumeralsCount=romanNumeralsByValue.length;
 	
-	value=Math.abs(value);
 	this.toString=function() {
+		if(value==0)
+			return '';
 		for(var i=(romanNumeralsCount-1);i>=0;i-=2) {
 			var romanNumeral=romanNumeralsByValue[i];
 			var arabicNumeral=romanNumeralsByValue[i-1];
-			if(value==arabicNumeral)
-				return romanNumeral;
-			if(value>arabicNumeral)
+			if(value>=arabicNumeral)
 				return romanNumeral+new RomanNumber(value-arabicNumeral).toString();
-			if (i >= 5) {
+			if (i >= 3) {
 				var substractiveRomanNumeral=romanNumeralsByValue[i-2];
 				var substractiveArabicNumeral=romanNumeralsByValue[i-3];
-				if((arabicNumeral-substractiveArabicNumeral)<=substractiveArabicNumeral) {
+				var valueOfSubstractRule=arabicNumeral-substractiveArabicNumeral;
+				if(valueOfSubstractRule<=substractiveArabicNumeral) {
 					substractiveRomanNumeral=romanNumeralsByValue[i-4];
 					substractiveArabicNumeral=romanNumeralsByValue[i-5];
+					valueOfSubstractRule=arabicNumeral-substractiveArabicNumeral;
 				}
-				if(value>=(arabicNumeral-substractiveArabicNumeral))
-					return substractiveRomanNumeral+romanNumeral+new RomanNumber(value-(arabicNumeral-substractiveArabicNumeral)).toString();
+				if(value>=valueOfSubstractRule)
+					return substractiveRomanNumeral+romanNumeral+new RomanNumber(value-valueOfSubstractRule).toString();
 			}
 		}
 	};
