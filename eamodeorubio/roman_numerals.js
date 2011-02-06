@@ -1,13 +1,4 @@
-var RomanNumber=function(value) {
-	var originalRomanNumeral2ArabicConversions=[
-		{'arabic':1000, 'roman':'M'},
-		{'arabic':500, 'roman':'D'},
-		{'arabic':100, 'roman':'C'},
-		{'arabic':50, 'roman':'L'},
-		{'arabic':10, 'roman':'X'},
-		{'arabic':5, 'roman':'V'},
-		{'arabic':1, 'roman':'I'}
-	];
+var RomanNumber=(function(originalRomanNumeral2ArabicConversions) {
 	var originalRoman2ArabicConversionsCount=originalRomanNumeral2ArabicConversions.length;
 	
 	var romanNumeral2ArabicConversions=[];
@@ -32,13 +23,23 @@ var RomanNumber=function(value) {
 	
 	var roman2ArabicConversionsCount=romanNumeral2ArabicConversions.length;
 	
-	this.toString=function() {
-		if(value==0)
-			return '';
-		for (var i = 0; i < roman2ArabicConversionsCount; i++) {
-			var roman2Arabic = romanNumeral2ArabicConversions[i];
-			if (value >= roman2Arabic.arabic) 
-				return roman2Arabic.roman + new RomanNumber(value - roman2Arabic.arabic).toString();
-		}
+	return function(value){
+		this.toString = function(){
+			if (value == 0) 
+				return '';
+			for (var i = 0; i < roman2ArabicConversionsCount; i++) {
+				var roman2Arabic = romanNumeral2ArabicConversions[i];
+				if (value >= roman2Arabic.arabic) 
+					return roman2Arabic.roman + new RomanNumber(value - roman2Arabic.arabic).toString();
+			}
+		};
 	};
-};
+})([
+		{'arabic':1000, 'roman':'M'},
+		{'arabic':500, 'roman':'D'},
+		{'arabic':100, 'roman':'C'},
+		{'arabic':50, 'roman':'L'},
+		{'arabic':10, 'roman':'X'},
+		{'arabic':5, 'roman':'V'},
+		{'arabic':1, 'roman':'I'}
+	]);
