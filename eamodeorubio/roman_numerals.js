@@ -1,5 +1,5 @@
 var RomanNumber=function(value) {
-	var romanNumeralsByValue=[
+	var originalRomanNumerals=[
 		1, 'I',
 		5, 'V',
 		10, 'X',
@@ -8,20 +8,34 @@ var RomanNumber=function(value) {
 		500, 'D',
 		1000, 'M'
 	];
-	var romanNumeralsCount=romanNumeralsByValue.length;
+	var romanNumeralsByValue=[];
+	
 	var giveRomanNumeralAndArabicConversionForSubstractRuleOf=function(i) {
-		var romanNumeral=romanNumeralsByValue[i];
-		var arabicNumeral=romanNumeralsByValue[i-1];
-		var substractiveRomanNumeral=romanNumeralsByValue[i-2];
-		var substractiveArabicNumeral=romanNumeralsByValue[i-3];
+		var romanNumeral=originalRomanNumerals[i];
+		var arabicNumeral=originalRomanNumerals[i-1];
+		var substractiveRomanNumeral=originalRomanNumerals[i-2];
+		var substractiveArabicNumeral=originalRomanNumerals[i-3];
 		var valueOfSubstractRule=arabicNumeral-substractiveArabicNumeral;
 		if(valueOfSubstractRule<=substractiveArabicNumeral) {
-			substractiveRomanNumeral=romanNumeralsByValue[i-4];
-			substractiveArabicNumeral=romanNumeralsByValue[i-5];
+			substractiveRomanNumeral=originalRomanNumerals[i-4];
+			substractiveArabicNumeral=originalRomanNumerals[i-5];
 			valueOfSubstractRule=arabicNumeral-substractiveArabicNumeral;
 		}
 		return [substractiveRomanNumeral+romanNumeral, valueOfSubstractRule];
 	};
+	
+	for (var i = (originalRomanNumerals.length - 1); i >= 0; i -= 2) {
+		romanNumeralsByValue.unshift(originalRomanNumerals[i]);
+		romanNumeralsByValue.unshift(originalRomanNumerals[i-1]);
+		if(i>=3) {
+			var virtualRomanNumeralAndArabicConversion=giveRomanNumeralAndArabicConversionForSubstractRuleOf(i);
+			romanNumeralsByValue.unshift(virtualRomanNumeralAndArabicConversion[0]);
+			romanNumeralsByValue.unshift(virtualRomanNumeralAndArabicConversion[1]);
+			
+		}
+	}
+	
+	var romanNumeralsCount=romanNumeralsByValue.length;
 	
 	this.toString=function() {
 		if(value==0)
@@ -29,14 +43,8 @@ var RomanNumber=function(value) {
 		for(var i=(romanNumeralsCount-1);i>=0;i-=2) {
 			var romanNumeral=romanNumeralsByValue[i];
 			var arabicNumeral=romanNumeralsByValue[i-1];
-			var restOfTheValue=value-arabicNumeral;
-			if (restOfTheValue<0 && i >= 3) {
-				var virtualRomanNumeralAndArabicConversion=giveRomanNumeralAndArabicConversionForSubstractRuleOf(i);
-				romanNumeral=virtualRomanNumeralAndArabicConversion[0];
-				restOfTheValue=value-virtualRomanNumeralAndArabicConversion[1];
-			}
-			if(restOfTheValue>=0)
-					return romanNumeral+new RomanNumber(restOfTheValue).toString();
+			if(value>=arabicNumeral)
+					return romanNumeral+new RomanNumber(value-arabicNumeral).toString();
 		}
 	};
 };
