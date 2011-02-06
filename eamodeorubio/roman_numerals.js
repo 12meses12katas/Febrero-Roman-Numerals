@@ -16,8 +16,9 @@ var RomanNumber=function(value) {
 		for(var i=(romanNumeralsCount-1);i>=0;i-=2) {
 			var romanNumeral=romanNumeralsByValue[i];
 			var arabicNumeral=romanNumeralsByValue[i-1];
-			if(value>=arabicNumeral)
-				return romanNumeral+new RomanNumber(value-arabicNumeral).toString();
+			var restOfTheValue=value-arabicNumeral;
+			if(restOfTheValue>=0)
+				return romanNumeral+new RomanNumber(restOfTheValue).toString();
 			if (i >= 3) {
 				var substractiveRomanNumeral=romanNumeralsByValue[i-2];
 				var substractiveArabicNumeral=romanNumeralsByValue[i-3];
@@ -27,8 +28,10 @@ var RomanNumber=function(value) {
 					substractiveArabicNumeral=romanNumeralsByValue[i-5];
 					valueOfSubstractRule=arabicNumeral-substractiveArabicNumeral;
 				}
-				if(value>=valueOfSubstractRule)
-					return substractiveRomanNumeral+romanNumeral+new RomanNumber(value-valueOfSubstractRule).toString();
+				romanNumeral=substractiveRomanNumeral+romanNumeral;
+				restOfTheValue=value-valueOfSubstractRule;
+				if(restOfTheValue>=0)
+					return romanNumeral+new RomanNumber(restOfTheValue).toString();
 			}
 		}
 	};
