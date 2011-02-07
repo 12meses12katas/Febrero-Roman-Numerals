@@ -29,33 +29,39 @@ var RomanNumber=(function(originalRomanNumeral2ArabicConversions) {
 	var roman2ArabicConversionsCount=romanNumeral2ArabicConversions.length;
 	
 	return function(value){
+		var romanResult, arabicResult;
+		
 		this.toString = function() {
-			var rest=value;
-			var result='';
-			for (var i = 0; rest>0&&i < roman2ArabicConversionsCount; i++) {
-				var roman2Arabic = romanNumeral2ArabicConversions[i];
-				while (rest >= roman2Arabic.arabic) {
-					rest -= roman2Arabic.arabic;
-					result += roman2Arabic.roman;
+			if (typeof(romanResult) != 'string') {
+				var rest = value;
+				romanResult = '';
+				for (var i = 0; rest > 0 && i < roman2ArabicConversionsCount; i++) {
+					var roman2Arabic = romanNumeral2ArabicConversions[i];
+					while (rest >= roman2Arabic.arabic) {
+						rest -= roman2Arabic.arabic;
+						romanResult += roman2Arabic.roman;
+					}
 				}
 			}
-			return result;
+			return romanResult;
 		};
 		
 		this.toNumber = function() {
-			var rest=value;
-			var result=0;
-			while(rest.length > 0) {
-				var roman=rest.substr(0,2);
-				var arabic=arabicNumbersByRomanNumeral[roman];
-				if(typeof(arabic)!='number') {
-					roman=rest[0];
-					arabic=arabicNumbersByRomanNumeral[roman];
+			if (typeof(arabicResult) != 'number') {
+				var rest = value;
+				arabicResult = 0;
+				while (rest.length > 0) {
+					var roman = rest.substr(0, 2);
+					var arabic = arabicNumbersByRomanNumeral[roman];
+					if (typeof(arabic) != 'number') {
+						roman = rest[0];
+						arabic = arabicNumbersByRomanNumeral[roman];
+					}
+					rest = rest.substr(roman.length);
+					arabicResult += arabic;
 				}
-				rest = rest.substr(roman.length);
-				result += arabic;
 			}
-			return result;
+			return arabicResult;
 		};
 	};
 })([
