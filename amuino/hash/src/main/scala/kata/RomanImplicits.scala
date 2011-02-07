@@ -22,6 +22,8 @@ object Roman {
 class RomanIntExtensions(delegate : Int) {
 
   def to_roman = {
+	if (delegate < 1 || delegate > 4000)
+		throw new NumberFormatException("Integer " + delegate + "out of roman range")
     val roman_and_remaining = Roman.DIVISOR_CANDIDATES.foldLeft(("", delegate)) {
       (accumulator_and_remaining, candidate) => {
         val (accumulator, remaining) = accumulator_and_remaining
@@ -36,17 +38,26 @@ class RomanIntExtensions(delegate : Int) {
 class RomanStringExtensions(delegate : String) {
 
   def from_roman:Int = {
+	if (delegate == "") 
+		throw new NumberFormatException("An empty string can't be converted")
     val result:Tuple2[Int,Int] = delegate.reverse.foldLeft((0, 0)) {
       (accumulator_and_previous, roman) => {
         val (accumulator, previous) = accumulator_and_previous
-        val current = Roman.TO_DEC(roman.toString)
+        val current = Roman.TO_DEC.get(roman.toString) match {
+			case Some(x) => x
+			case None => throw new NumberFormatException("Invalid roman digit: " + roman)
+		}
         if(current < previous)
           (accumulator - current, current)
         else
           (accumulator + current, current)
       }
     }
-    result._1
+	val arabic = result._1
+	if (new RomanIntExtensions(arabic).to_roman == delegate)
+    	arabic
+	else
+		throw new NumberFormatException("Input '" + delegate + "' is not a valid roman")
   }
 }
 
