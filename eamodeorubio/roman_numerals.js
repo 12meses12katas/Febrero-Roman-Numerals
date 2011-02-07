@@ -30,25 +30,32 @@ var RomanNumber=(function(originalRomanNumeral2ArabicConversions) {
 	
 	return function(value){
 		this.toString = function() {
-			if (value == 0) 
-				return '';
-			for (var i = 0; i < roman2ArabicConversionsCount; i++) {
+			var rest=value;
+			var result='';
+			for (var i = 0; rest>0&&i < roman2ArabicConversionsCount; i++) {
 				var roman2Arabic = romanNumeral2ArabicConversions[i];
-				if (value >= roman2Arabic.arabic) 
-					return roman2Arabic.roman + new RomanNumber(value - roman2Arabic.arabic).toString();
+				while (rest >= roman2Arabic.arabic) {
+					rest -= roman2Arabic.arabic;
+					result += roman2Arabic.roman;
+				}
 			}
+			return result;
 		};
 		
 		this.toNumber = function() {
-			if(value.length==0)
-				return 0;
-			var roman=value.substr(0,2);
-			var arabic=arabicNumbersByRomanNumeral[roman];
-			if(typeof(arabic)!='number') {
-				roman=value[0];
-				arabic=arabicNumbersByRomanNumeral[roman];
+			var rest=value;
+			var result=0;
+			while(rest.length > 0) {
+				var roman=rest.substr(0,2);
+				var arabic=arabicNumbersByRomanNumeral[roman];
+				if(typeof(arabic)!='number') {
+					roman=rest[0];
+					arabic=arabicNumbersByRomanNumeral[roman];
+				}
+				rest = rest.substr(roman.length);
+				result += arabic;
 			}
-			return arabic + new RomanNumber(value.substr(roman.length)).toNumber();
+			return result;
 		};
 	};
 })([
