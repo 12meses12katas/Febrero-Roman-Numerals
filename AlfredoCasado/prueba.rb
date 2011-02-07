@@ -1,1 +1,7 @@
-puts "mañana hago la kata que el git esta controlao"
+require "rspec"
+
+describe "kdkdk" do
+  it "kdkdkd" do
+    
+  end
+end
