@@ -24,7 +24,7 @@ var RomanNumber=(function(originalRomanNumeral2ArabicConversions) {
 	var roman2ArabicConversionsCount=romanNumeral2ArabicConversions.length;
 	
 	return function(value){
-		this.toString = function(){
+		this.toString = function() {
 			if (value == 0) 
 				return '';
 			for (var i = 0; i < roman2ArabicConversionsCount; i++) {
@@ -33,13 +33,25 @@ var RomanNumber=(function(originalRomanNumeral2ArabicConversions) {
 					return roman2Arabic.roman + new RomanNumber(value - roman2Arabic.arabic).toString();
 			}
 		};
+		
+		this.toNumber = function() {
+			if(value.length==0)
+				return 0;
+			var roman2Arabic;
+			for (var i = 0; !roman2Arabic && i < roman2ArabicConversionsCount; i++) {
+				var currentRoman2Arabic = romanNumeral2ArabicConversions[i];
+				if(value.indexOf(currentRoman2Arabic.roman)==0)
+					roman2Arabic=currentRoman2Arabic;
+			}
+			return roman2Arabic.arabic + new RomanNumber(value.substr(roman2Arabic.roman.length)).toNumber();
+		};
 	};
 })([
-		{'arabic':1000, 'roman':'M'},
-		{'arabic':500, 'roman':'D'},
-		{'arabic':100, 'roman':'C'},
-		{'arabic':50, 'roman':'L'},
-		{'arabic':10, 'roman':'X'},
-		{'arabic':5, 'roman':'V'},
-		{'arabic':1, 'roman':'I'}
-	]);
+	{'arabic':1000, 'roman':'M'},
+	{'arabic':500, 'roman':'D'},
+	{'arabic':100, 'roman':'C'},
+	{'arabic':50, 'roman':'L'},
+	{'arabic':10, 'roman':'X'},
+	{'arabic':5, 'roman':'V'},
+	{'arabic':1, 'roman':'I'}
+]);

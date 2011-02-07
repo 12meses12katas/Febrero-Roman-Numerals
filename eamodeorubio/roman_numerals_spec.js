@@ -6,6 +6,12 @@ describe("RomanNumber", function(){
 			});
 		};
 		
+		var appendRomanToArabicConversionSpec = function(romanNumber, expectedArabicNumber){
+			it(romanNumber + " is converted to " + expectedArabicNumber, function(){
+				expect(new RomanNumber(romanNumber).toNumber()).toEqual(expectedArabicNumber);
+			});
+		};
+		
 		var sampleArabicToRomanEquivalences = [
 			1,		'I',
 			2,		'II',
@@ -37,8 +43,11 @@ describe("RomanNumber", function(){
 			2999, 'MMCMXCIX',
 			3000, 'MMM'
 		];
-		for (var i = 0; i < sampleArabicToRomanEquivalences.length; i += 2) 
-			appendArabicToRomanConversionSpec(sampleArabicToRomanEquivalences[i]
-																			, sampleArabicToRomanEquivalences[i + 1]);
+		for (var i = 0; i < sampleArabicToRomanEquivalences.length; i += 2) {
+			var romanNumber=sampleArabicToRomanEquivalences[i + 1];
+			var arabicNumber=sampleArabicToRomanEquivalences[i];
+			appendArabicToRomanConversionSpec(arabicNumber, romanNumber);
+			appendRomanToArabicConversionSpec(romanNumber, arabicNumber);
+		}
 	});
 });
