@@ -31,6 +31,10 @@ object RomanSpec extends Specification with DataTables {
 	"zero should fail" in {
 		0.to_roman must(throwA[NumberFormatException])
 	}
+	"4000 should fail" in {
+		4000.to_roman must(throwA[NumberFormatException])
+	}
+
   }
 
   "Converting from arabic to roman" should {
