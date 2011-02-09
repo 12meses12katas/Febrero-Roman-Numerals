@@ -37,7 +37,6 @@ int main(int argc, char **argv){
 	dec = (num % 50)/10;
 	five = (num % 10)/5;
 	unit = num%5;
-
 	//Begin adding letters to the end of the string:
 	add_letter('M', str_out, mil);
 	if(cent == 4){
