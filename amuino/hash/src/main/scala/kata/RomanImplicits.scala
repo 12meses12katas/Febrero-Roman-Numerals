@@ -22,7 +22,7 @@ object Roman {
 class RomanIntExtensions(delegate : Int) {
 
   def to_roman = {
-	if (delegate < 1 || delegate > 4000)
+	if (delegate < 1 || delegate > 3999)
 		throw new NumberFormatException("Integer " + delegate + "out of roman range")
     val roman_and_remaining = Roman.DIVISOR_CANDIDATES.foldLeft(("", delegate)) {
       (accumulator_and_remaining, candidate) => {
