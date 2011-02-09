@@ -15,15 +15,13 @@ int add_letter(char letter, char *out_str, int n){
 int numeral_to_roman(int num, char *str_out){
 	int i;
 	char symbols[7] = {'M','D', 'C', 'L', 'X', 'V', 'I'};
+	int symbols_num[7] = {1000, 500, 100, 50, 10, 5, 1};
 	int divided_num[7];
 	//First, divide out the number into interesting divisors:
-	divided_num[0] = num / 1000; //1000
-	divided_num[1] = (num % 1000)/500; //500
-	divided_num[2] = (num % 500)/100; //100
-	divided_num[3] = (num % 100)/50;//50
-	divided_num[4] = (num % 50)/10;//10
-	divided_num[5] = (num % 10)/5;//5
-	divided_num[6] = num%5;//1
+	divided_num[0] = num/symbols_num[0];
+	for(i=1; i<7; i++){
+		divided_num[i] = (num % symbols_num[i-1])/symbols_num[i];
+	}
 	//Begin adding letters to the end of the string:
 	add_letter(symbols[0], str_out, divided_num[0]);
 	for(i=1; i<7; i = i+2){
