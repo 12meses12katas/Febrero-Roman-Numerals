@@ -81,19 +81,26 @@ int main(int argc, char **argv){
 	int num;
 	char str_out[20];
 	str_out[0] = 0;
-	if(argc != 2){
-		fprintf(stderr,"ERROR: Wrong arg numbers\n\tUSAGE: %s number\n", argv[0]);
+	if(argc != 3){
+		fprintf(stderr,"ERROR: Wrong arg numbers\n\tUSAGE: %s [r,n] number\n", argv[0]);
 		exit(-1);
 	}
-	num = atoi(argv[1]);
-	if(num<0){
-		fprintf(stderr,"ERROR: Please, insert a positive number\n");
-		exit(-1);
-	}else if(num>3000){
-		fprintf(stderr,"ERROR: Please, do NOT exceed the number 3000\n");
-		exit(-1);
-	}
-	numeral_to_roman(num, str_out);
-	printf("%s\n", str_out);
+	if(argv[1][0] == 'n'){
+		num = atoi(argv[2]);
+		if(num<0){
+			fprintf(stderr,"ERROR: Please, insert a positive number\n");
+			exit(-1);
+		}else if(num>3000){
+			fprintf(stderr,"ERROR: Please, do NOT exceed the number 3000\n");
+			exit(-1);
+		}
+		numeral_to_roman(num, str_out);
+		printf("%s\n", str_out);
+	}else if(argv[1][0] == 'r'){
+		num = roman_to_numeral(argv[2]);
+		printf("%d\n", num);
+	}else{
+		fprintf(stderr,"ERROR: Wrong arg numbers\n\tUSAGE: %s [r,n] number\n", argv[0]);
+	}	
 	exit(0);
 }
