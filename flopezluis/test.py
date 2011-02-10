@@ -16,6 +16,20 @@ class TestRomans(unittest.TestCase):
         self.assertEqual(Roman.CD, 400)
         self.assertEqual(Roman.CDXLVIII, 448)
 
+
+        self.assertEqual(Roman.to_roman(1), 'I')
+        self.assertEqual(Roman.to_roman(3), 'III')
+        self.assertEqual(Roman.to_roman(4) , 'IV')
+        self.assertEqual(Roman.to_roman(5), 'V')
+        self.assertEqual(Roman.to_roman(6), 'VI')
+        self.assertEqual(Roman.to_roman(9), 'IX')
+        self.assertEqual(Roman.to_roman(24), 'XXIV')
+        self.assertEqual(Roman.to_roman(31), 'XXXI')
+        self.assertEqual(Roman.to_roman(369), 'CCCLXIX')
+        self.assertEqual(Roman.to_roman(400), 'CD')
+        self.assertEqual(Roman.to_roman(448), 'CDXLVIII')
+
+
 if __name__ == '__main__':
     unittest.main()
         
