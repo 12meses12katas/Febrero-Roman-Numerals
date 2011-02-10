@@ -1,4 +1,3 @@
-
 class Fixnum
   ROMAN_ONES = ["I", "X", "C", "M"]
   ROMAN_FIVES = ["V", "L", "D", ""]
@@ -19,5 +18,21 @@ class Fixnum
       when 4 then ROMAN_ONES[scale] + (five_or_more == 1 ? ROMAN_ONES[scale+1] : ROMAN_FIVES[scale])
       else ROMAN_FIVES[scale]*five_or_more + ROMAN_ONES[scale]*less_than_five
     end
+  end
+end
+
+class String
+  ROMAN_VALUES = {"M" => 1000, "D" => 500, "C" => 100, "L" => 50, "X" => 10, "V" => 5, "I" => 1}
+  
+  def from_roman
+    (self.chars.to_a << nil).each_cons(2).inject(0) do |result, digits|
+      current_digit, next_digit = from_roman_letter(digits.first), from_roman_letter(digits.last).to_i
+      sign = (current_digit < next_digit) ? -1 : +1
+      result += sign * current_digit
+    end
+  end
+  
+  def from_roman_letter(value)
+    return ROMAN_VALUES[value]
   end
 end
