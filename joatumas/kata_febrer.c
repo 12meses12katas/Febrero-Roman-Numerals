@@ -39,6 +39,44 @@ int numeral_to_roman(int num, char *str_out){
 	return(0);
 }
 
+int roman_to_numeral(char *roman){
+	int res=0, i, aux, aux_ant=0;
+	int len = strlen(roman);
+	for(i=len; i--;){
+		switch(roman[i]){
+			case 'I':
+				aux = 1;
+				break;
+			case 'V':
+				aux = 5;
+				break;
+			case 'X':
+				aux = 10;
+				break;
+			case 'L':
+				aux = 50;
+				break;
+			case 'C':
+				aux = 100;
+				break;
+			case 'D':
+				aux = 500;
+				break;
+			case 'M':
+				aux = 1000;
+				break;
+			default:
+				break;
+		}
+		if(aux_ant>aux)
+			aux = -aux;
+		else
+			aux_ant = aux;
+		res += aux;
+	}
+	return(res);
+}
+
 int main(int argc, char **argv){
 	int num;
 	char str_out[20];
