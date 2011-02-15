@@ -18,7 +18,7 @@ class RomanNumerals(object):
         #finalizamos cuando el numero es 0
         while num > 0:
             while num >= self.values[index]:
-                #anadimos el simbolo a la soluci—n
+                #anadimos el simbolo a la solucion
                 output = output + self.symbols[index]
                 #restamos el valor numerico
                 num = num - self.values[index]
@@ -39,7 +39,7 @@ class RomanNumerals(object):
         while valid and index < len(num):
             #obtenemos el simbolo
             car = num[index]
-            #obtenemos el ’ndice del simbolo
+            #obtenemos el indice del simbolo
             indexSymbol = self.symbol.index(car)
             if(indexSymbol >= 0):
                 #sumamos su valor correspondiente
