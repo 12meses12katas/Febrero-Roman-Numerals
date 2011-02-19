@@ -3,7 +3,7 @@ class Fixnum
   ROMAN_FIVES = ["V", "L", "D", ""]
   
   def to_roman
-    nil if self < 1 || self >= 3000
+    return nil if self < 1 || self >= 4000
     current = self
     [3,2,1,0].inject("") do |result, power|
       div, mod = current.divmod(10**power)
@@ -25,11 +25,14 @@ class String
   ROMAN_VALUES = {"M" => 1000, "D" => 500, "C" => 100, "L" => 50, "X" => 10, "V" => 5, "I" => 1}
   
   def from_roman
-    (self.chars.to_a << nil).each_cons(2).inject(0) do |result, digits|
+    integer = (self.chars.to_a << nil).each_cons(2).inject(0) do |result, digits|
       current_digit, next_digit = from_roman_letter(digits.first), from_roman_letter(digits.last).to_i
+      return nil if current_digit.nil? || next_digit.nil?
       sign = (current_digit < next_digit) ? -1 : +1
       result += sign * current_digit
     end
+    return integer if integer.to_roman == self
+    nil
   end
   
   def from_roman_letter(value)
