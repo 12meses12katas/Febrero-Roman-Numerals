@@ -29,6 +29,28 @@ class Fixnum
     end
     return ''
   end
+end
 
-
+class String
+  def from_roman()
+    conversions = {
+      'M' => 1000,
+      'CM' => 900,
+      'D' => 500,
+      'CD' => 400,
+      'C' => 100,
+      'XC' => 90,
+      'L' => 50,
+      'XL' => 40,
+      'X' => 10,
+      'IX' => 9,
+      'V' => 5,
+      'IV' => 4,
+      'I' => 1,
+    }
+    conversions.each do |roman,arab|
+      return arab + self[(roman.length)..-1].from_roman if self.start_with? roman
+    end
+    0
+  end
 end

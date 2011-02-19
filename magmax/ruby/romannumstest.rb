@@ -28,7 +28,7 @@ describe Fixnum, "#roman" do
     100 => 'C',
     400 => 'CD',
     500 => 'D',
-    900 => 'CM',
+     900 => 'CM',
     1000 => 'M',
     1998 => 'MCMXCVIII',
   }
@@ -38,4 +38,40 @@ describe Fixnum, "#roman" do
       arab.to_roman().should == roman
     end
   end
+end
+
+
+
+describe String, "#roman" do
+  numbers = {
+    'I' => 1,
+    'II' => 2,
+    'III' => 3,
+    'IV' => 4,
+    'V' => 5,
+    'VI' => 6,
+    'VIII' => 8,
+    'IX' => 9,
+    'X' => 10,
+    'XI' => 11,
+    'XIV' => 14,
+    'XX' => 20,
+    'XLI' => 41,
+    'LVIII' => 58,
+    'XCIII' => 93,
+    'CLXXIV' => 174,
+    'CDIV' => 404,
+    'DCCCLXXXVIII' => 888,
+    'CMIX'=> 909,
+    'MCI ' => 1101,
+    'MCMXCVIII' => 1998,
+  }
+
+  it "returns the arabian number for one" do
+    numbers.each do |roman,arab|
+      roman.from_roman.should == arab
+    end
+  end
+
+
 end
