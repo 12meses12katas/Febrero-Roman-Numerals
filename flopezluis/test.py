@@ -25,6 +25,7 @@ class TestRomans(unittest.TestCase):
         self.assertEqual(Roman.to_roman(9), 'IX')
         self.assertEqual(Roman.to_roman(24), 'XXIV')
         self.assertEqual(Roman.to_roman(31), 'XXXI')
+        self.assertEqual(Roman.to_roman(90), 'XC')
         self.assertEqual(Roman.to_roman(369), 'CCCLXIX')
         self.assertEqual(Roman.to_roman(400), 'CD')
         self.assertEqual(Roman.to_roman(448), 'CDXLVIII')
