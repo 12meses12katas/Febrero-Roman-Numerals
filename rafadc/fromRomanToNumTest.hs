@@ -31,4 +31,4 @@ testConversionOfIX = TestCase $ assertEqual
 testConversionOfX = TestCase $ assertEqual 
   "Should get 10 from roman X" 10 ( fromRomanToNumber "X")
 
-main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX]
+main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX, testConversionOfX]
