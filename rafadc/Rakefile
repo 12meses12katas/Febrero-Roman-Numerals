@@ -1,4 +1,5 @@
 desc "Run tests"
 task :test do
-  exec ("ghc -e main romanCalculatorTest.hs")
+  exec ("ghc -e main fromNumToRomanTest.hs")
+  exec ("ghc -e main fromRomanToNumTest.hs")
 end

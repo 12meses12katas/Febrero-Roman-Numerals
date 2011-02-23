@@ -1,4 +1,4 @@
-module RomanCalculator_Test where
+module FromNumToRoman_Test where
 
 import RomanCalculator( fromNumberToRoman )
 import Test.HUnit

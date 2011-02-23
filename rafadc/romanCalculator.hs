@@ -15,3 +15,6 @@ fromNumberToRoman number
 	| number < 500 = "CD" ++ fromNumberToRoman(number-400)
 	| number < 1000 = "D" ++ fromNumberToRoman(number-500)
 	| otherwise = "M" ++ fromNumberToRoman(number-1000)
+
+fromRomanToNumber :: String -> Int
+fromRomanToNumber roman = undefined
