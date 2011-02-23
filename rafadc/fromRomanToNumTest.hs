@@ -44,5 +44,8 @@ testConversionOfXLII = TestCase $ assertEqual
 
 testsForXL = TestList [testConversionOfXL, testConversionOfXLII]
 
+testConversionOfLVI = TestCase $ assertEqual 
+  "Should get 56 from roman LVI" 56 ( fromRomanToNumber "LVI")
+
 main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX, testsForX,
 							 testsForXL]
