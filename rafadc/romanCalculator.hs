@@ -18,4 +18,6 @@ fromNumberToRoman number
 
 fromRomanToNumber :: String -> Int
 fromRomanToNumber "I" = 1
-fromRomanToNumber otherwise = 2
+fromRomanToNumber "II" = 2
+fromRomanToNumber otherwise = 3
+

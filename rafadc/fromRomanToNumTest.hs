@@ -9,6 +9,9 @@ testConversionOfI = TestCase $ assertEqual
 testConversionOfII = TestCase $ assertEqual 
   "Should get 2 from roman II" 2 ( fromRomanToNumber "II")
 
-testsForI = TestList [testConversionOfI, testConversionOfII]
+testConversionOfIII = TestCase $ assertEqual 
+  "Should get 3 from roman III" 3 ( fromRomanToNumber "III")
+
+testsForI = TestList [testConversionOfI, testConversionOfII, testConversionOfIII]
 
 main = runTestTT $ TestList [testsForI]
