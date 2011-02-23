@@ -39,5 +39,10 @@ testsForX = TestList [testConversionOfX, testConversionOfXVI]
 testConversionOfXL = TestCase $ assertEqual 
   "Should get 40 from roman XL" 40 ( fromRomanToNumber "XL")
 
+testConversionOfXLII = TestCase $ assertEqual 
+  "Should get 42 from roman XLII" 42 ( fromRomanToNumber "XLII")
+
+testsForXL = TestList [testConversionOfXL, testConversionOfXLII]
+
 main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX, testsForX,
-							 testConversionOfXL]
+							 testsForXL]
