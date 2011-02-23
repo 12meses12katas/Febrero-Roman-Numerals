@@ -66,7 +66,13 @@ testConversionOf89= TestCase $ assertEqual
 
 testsForLimitCases = TestList [testConversionOf39, testConversionOf49, testConversionOf89] 
 
+testConversionOf132= TestCase $ assertEqual 
+  "Should get CXXXII from number 132" "CXXXII" ( fromNumberToRoman 132)
+
+testsForC = testConversionOf132
+
+
 
 main = runTestTT $ TestList [testsForI, testsForIV, testsForV, 
 							 testsForIX, testsForX, testsForXL, testsForL,
-							 testsForXC, testsForLimitCases]
+							 testsForXC, testsForC, testsForLimitCases]
