@@ -7,4 +7,5 @@ fromNumberToRoman number
 	| number == 4 = "IV"
 	| number < 9 = "V" ++ fromNumberToRoman(number-5)
 	| number == 9 = "IX"
-	| number >= 10 = "X" ++ fromNumberToRoman(number-10)
+	| number < 39 = "X" ++ fromNumberToRoman(number-10)
+	| number >= 40 = "XL" ++ fromNumberToRoman(number-40)
