@@ -1,7 +1,8 @@
 module RomanCalculator (fromNumberToRoman) where
 
 fromNumberToRoman :: Int -> String
-fromNumberToRoman number 
+fromNumberToRoman number
+	| number == 0 = ""
 	| number <= 3 = take number (repeat 'I')
 	| number == 4 = "IV"
-	| otherwise = "V"
+	| number >= 5 = "V" ++ fromNumberToRoman(number-5)
