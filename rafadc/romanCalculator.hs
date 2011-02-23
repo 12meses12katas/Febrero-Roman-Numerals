@@ -9,4 +9,5 @@ fromNumberToRoman number
 	| number == 9 = "IX"
 	| number < 39 = "X" ++ fromNumberToRoman(number-10)
 	| number < 49 = "XL" ++ fromNumberToRoman(number-40)
-	| number >= 50 = "L" ++ fromNumberToRoman(number-50)
+	| number < 89 = "L" ++ fromNumberToRoman(number-50)
+	| number >= 90 = "XC" ++ fromNumberToRoman(number-90)
