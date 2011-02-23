@@ -20,6 +20,7 @@ fromRomanToNumber :: String -> Int
 fromRomanToNumber roman 
 	| roman == [] = 0
 	| roman == "IV" = 4
+	| roman == "IX" = 9
 	| head roman == 'V' = 5 + fromRomanToNumber (tail roman)
 	| head roman == 'I' = 1 + fromRomanToNumber (tail roman)
 
