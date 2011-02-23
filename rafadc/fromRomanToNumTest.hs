@@ -56,6 +56,9 @@ testConversionOfCLII = TestCase $ assertEqual
 testConversionOfCDIX = TestCase $ assertEqual 
   "Should get 409 from roman CDIX" 409 ( fromRomanToNumber "CDIX")
 
+testConversionOfDCDIX = TestCase $ assertEqual 
+  "Should get 909 from roman DCDIX" 909 ( fromRomanToNumber "DCDIX")
+
 main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX, testsForX,
 							 testsForXL, testConversionOfLVI, testConversionOfXCII, testConversionOfCLII,
-							 testConversionOfCDIX]
+							 testConversionOfCDIX, testConversionOfDCDIX]
