@@ -19,6 +19,7 @@ fromNumberToRoman number
 fromRomanToNumber :: String -> Int
 fromRomanToNumber roman 
 	| roman == [] = 0
+	| roman == "V" = 5
 	| roman == "IV" = 4
 	| head roman == 'I' = 1 + fromRomanToNumber (tail roman)
 
