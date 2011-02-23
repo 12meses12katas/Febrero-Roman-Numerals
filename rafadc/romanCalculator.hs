@@ -1,38 +1,52 @@
 module RomanCalculator (fromNumberToRoman, fromRomanToNumber) where
 
+value_of_I = 1
+value_of_IV = 4
+value_of_V = 5
+value_of_IX = 9
+value_of_X = 10
+value_of_XL = 40
+value_of_L = 50
+value_of_XC = 90
+value_of_C = 100
+value_of_CD = 400
+value_of_D = 500
+value_of_CM = 900
+value_of_M = 1000
+
 fromNumberToRoman :: Int -> String
 fromNumberToRoman number
 	| number <= 0 = ""
-	| number <= 3 = "I" ++ fromNumberToRoman(number-1)
-	| number == 4 = "IV"
-	| number < 9 = "V" ++ fromNumberToRoman(number-5)
-	| number == 9 = "IX"
-	| number < 40 = "X" ++ fromNumberToRoman(number-10)
-	| number < 50 = "XL" ++ fromNumberToRoman(number-40)
-	| number < 90 = "L" ++ fromNumberToRoman(number-50)
-	| number < 100 = "XC" ++ fromNumberToRoman(number-90)
-	| number < 400 = "C" ++ fromNumberToRoman(number-100)
-	| number < 500 = "CD" ++ fromNumberToRoman(number-400)
-	| number < 900 = "D" ++ fromNumberToRoman(number-500)
-	| number < 1000 = "CM" ++ fromNumberToRoman(number-900)
-	| otherwise = "M" ++ fromNumberToRoman(number-1000)
+	| number < value_of_IV = "I" ++ fromNumberToRoman(number-value_of_I)
+	| number == value_of_IV = "IV"
+	| number < value_of_IX = "V" ++ fromNumberToRoman(number-value_of_V)
+	| number == value_of_IX = "IX"
+	| number < value_of_XL = "X" ++ fromNumberToRoman(number-value_of_X)
+	| number < value_of_L = "XL" ++ fromNumberToRoman(number-value_of_XL)
+	| number < value_of_XC = "L" ++ fromNumberToRoman(number-value_of_L)
+	| number < value_of_C = "XC" ++ fromNumberToRoman(number-value_of_XC)
+	| number < value_of_CD = "C" ++ fromNumberToRoman(number-value_of_C)
+	| number < value_of_D = "CD" ++ fromNumberToRoman(number-value_of_CD)
+	| number < value_of_CM = "D" ++ fromNumberToRoman(number-value_of_D)
+	| number < value_of_M = "CM" ++ fromNumberToRoman(number-value_of_CM)
+	| otherwise = "M" ++ fromNumberToRoman(number-value_of_M)
 
 fromRomanToNumber :: String -> Int
 fromRomanToNumber roman 
 	| roman == [] = 0
-	| roman == "IV" = 4
-	| roman == "IX" = 9
-	| take 2 roman == "XL" = 40 + fromRomanToNumber (drop 2 roman)
-	| take 2 roman == "XC" = 90 + fromRomanToNumber (drop 2 roman)
-	| take 2 roman == "CD" = 400 + fromRomanToNumber (drop 2 roman)
-	| take 2 roman == "CM" = 900 + fromRomanToNumber (drop 2 roman)
-	| head roman == 'M' = 1000 + fromRomanToNumber (tail roman)
-	| head roman == 'D' = 500 + fromRomanToNumber (tail roman)
-	| head roman == 'C' = 100 + fromRomanToNumber (tail roman)
-	| head roman == 'L' = 50 + fromRomanToNumber (tail roman)
-	| head roman == 'X' = 10 + fromRomanToNumber (tail roman)
-	| head roman == 'V' = 5 + fromRomanToNumber (tail roman)
-	| head roman == 'I' = 1 + fromRomanToNumber (tail roman)
+	| roman == "IV" = value_of_IV
+	| roman == "IX" = value_of_IX
+	| take 2 roman == "XL" = value_of_XL + fromRomanToNumber (drop 2 roman)
+	| take 2 roman == "XC" = value_of_XC + fromRomanToNumber (drop 2 roman)
+	| take 2 roman == "CD" = value_of_CD + fromRomanToNumber (drop 2 roman)
+	| take 2 roman == "CM" = value_of_CM + fromRomanToNumber (drop 2 roman)
+	| head roman == 'M' = value_of_M + fromRomanToNumber (tail roman)
+	| head roman == 'D' = value_of_D + fromRomanToNumber (tail roman)
+	| head roman == 'C' = value_of_C + fromRomanToNumber (tail roman)
+	| head roman == 'L' = value_of_L + fromRomanToNumber (tail roman)
+	| head roman == 'X' = value_of_X + fromRomanToNumber (tail roman)
+	| head roman == 'V' = value_of_V + fromRomanToNumber (tail roman)
+	| head roman == 'I' = value_of_I + fromRomanToNumber (tail roman)
 
 fromRomanToNumber otherwise = 0
 
