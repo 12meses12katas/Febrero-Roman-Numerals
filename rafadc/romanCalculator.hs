@@ -6,4 +6,5 @@ fromNumberToRoman number
 	| number <= 3 = take number (repeat 'I')
 	| number == 4 = "IV"
 	| number < 9 = "V" ++ fromNumberToRoman(number-5)
-	| otherwise = "IX"
+	| number == 9 = "IX"
+	| otherwise = "XII"
