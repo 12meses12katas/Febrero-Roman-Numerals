@@ -19,8 +19,22 @@
        0 nil
        1 "I" 2 "II" 3 "III" 4 "IV" 5 "V"
        6 "VI" 9 "IX" 49 "XLIX" 440 "CDXL" 1949 "MCMXLIX"))
-;; Hasta aqui valdria para la kata basica, pero como esta de moda el monkey patching vamos
-;; a extender unos cuantos tipos para crear una funcion generica to-roman despachada en tiempo de ejecucion
+
+(defn reverse-map [m] (zipmap (vals m) (keys m)))
+
+(def ints-digits (reverse-map digits-ints))
+
+(defn to-int [s]
+  (ints-digits s))
+
+(deftest conversion-from-roman-to-int
+  (are [x y] (= (to-int x) y)
+       "I" 1 "II" 2 "III" 3))
+
+;; Hasta aqui valdria para la kata basica, pero como esta de moda el
+;; monkey patching vamos a extender unos cuantos tipos para crear una
+;; funcion generica to-roman despachada en tiempo de ejecucion
+
 (defprotocol Cast
   (to-roman [self]))
 
@@ -34,7 +48,7 @@
 
 (extend-type Object
   roman-numerals/Cast
-  (to-roman [s] (throw UnsupportedOperationException)))
+  (to-roman [s] (throw (UnsupportedOperationException.))))
 
 (deftest castings-to-roman
   (is (thrown? UnsupportedOperationException
