@@ -81,7 +81,12 @@ testConversionOf552= TestCase $ assertEqual
 
 testsForD = testConversionOf552
 
+testConversionOf1252= TestCase $ assertEqual 
+  "Should get MCCLII from number 1252" "MCCLII" ( fromNumberToRoman 1252)
+
+testsForM = testConversionOf1252
+
 main = runTestTT $ TestList [testsForI, testsForIV, testsForV, 
 							 testsForIX, testsForX, testsForXL, testsForL,
 							 testsForXC, testsForC, testsForCD, testsForD,
-							 testsForLimitCases]
+							 testsForM, testsForLimitCases]
