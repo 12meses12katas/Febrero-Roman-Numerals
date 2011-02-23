@@ -66,33 +66,33 @@ testConversionOf89= TestCase $ assertEqual
 
 testsForLimitCases = TestList [testConversionOf39, testConversionOf49, testConversionOf89] 
 
-testConversionOf132= TestCase $ assertEqual 
+testConversionOf132 = TestCase $ assertEqual 
   "Should get CXXXII from number 132" "CXXXII" ( fromNumberToRoman 132)
 
 testsForC = testConversionOf132
 
-testConversionOf412= TestCase $ assertEqual 
+testConversionOf412 = TestCase $ assertEqual 
   "Should get CDXII from number 412" "CDXII" ( fromNumberToRoman 412)
 
 testsForCD = testConversionOf412
 
-testConversionOf552= TestCase $ assertEqual 
+testConversionOf552 = TestCase $ assertEqual 
   "Should get DLII from number 552" "DLII" ( fromNumberToRoman 552)
 
-testsForD = testConversionOf552
+testsForD = TestList [testConversionOf552]
 
-testConversionOf1252= TestCase $ assertEqual 
+testConversionOf1252 = TestCase $ assertEqual 
   "Should get MCCLII from number 1252" "MCCLII" ( fromNumberToRoman 1252)
 
-testConversionOf1999= TestCase $ assertEqual 
-  "Should get MCMXCIX from number 1999" "MCMXCIX" ( fromNumberToRoman 1999)
+testsForM = TestList [testConversionOf1252]
 
-testsForM = testConversionOf1252
-
-testConversionOf901= TestCase $ assertEqual 
+testConversionOf901 = TestCase $ assertEqual 
   "Should get CMI from number 901" "CMI" ( fromNumberToRoman 901)
 
-testsForCM = testConversionOf1252
+testConversionOf1999 = TestCase $ assertEqual 
+  "Should get MCMXCIX from number 1999" "MCMXCIX" ( fromNumberToRoman 1999)
+
+testsForCM = TestList [testConversionOf1252, testConversionOf1999]
 
 main = runTestTT $ TestList [testsForI, testsForIV, testsForV, 
 							 testsForIX, testsForX, testsForXL, testsForL,
