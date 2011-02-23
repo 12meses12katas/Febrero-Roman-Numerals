@@ -22,7 +22,7 @@ testConversionOf7 = TestCase $ assertEqual
   "Should get VII from number 7" "VII" ( fromNumberToRoman 7)
 
 testConversionOf9 = TestCase $ assertEqual 
-  "Should get IX from number 7" "IX" ( fromNumberToRoman 9)
+  "Should get IX from number 9" "IX" ( fromNumberToRoman 9)
 
 testConversionOf12 = TestCase $ assertEqual 
   "Should get XII from number 12" "XII" ( fromNumberToRoman 12)
