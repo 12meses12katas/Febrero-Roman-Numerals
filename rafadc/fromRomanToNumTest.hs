@@ -6,5 +6,9 @@ import Test.HUnit
 testConversionOfI = TestCase $ assertEqual 
   "Should get 1 from roman I" 1 ( fromRomanToNumber "I")
 
+testConversionOfII = TestCase $ assertEqual 
+  "Should get 2 from roman II" 2 ( fromRomanToNumber "II")
 
-main = runTestTT $ TestList [testConversionOfI]
+testsForI = TestList [testConversionOfI, testConversionOfII]
+
+main = runTestTT $ TestList [testsForI]

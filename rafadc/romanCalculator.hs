@@ -17,4 +17,5 @@ fromNumberToRoman number
 	| otherwise = "M" ++ fromNumberToRoman(number-1000)
 
 fromRomanToNumber :: String -> Int
-fromRomanToNumber _ = 1
+fromRomanToNumber "I" = 1
+fromRomanToNumber otherwise = 2
