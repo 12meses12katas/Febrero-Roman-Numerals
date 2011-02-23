@@ -23,6 +23,7 @@ fromRomanToNumber roman
 	| roman == "IX" = 9
 	| take 2 roman == "XL" = 40 + fromRomanToNumber (drop 2 roman)
 	| take 2 roman == "XC" = 90 + fromRomanToNumber (drop 2 roman)
+	| take 2 roman == "CD" = 400 + fromRomanToNumber (drop 2 roman)
 	| head roman == 'C' = 100 + fromRomanToNumber (tail roman)
 	| head roman == 'L' = 50 + fromRomanToNumber (tail roman)
 	| head roman == 'X' = 10 + fromRomanToNumber (tail roman)
