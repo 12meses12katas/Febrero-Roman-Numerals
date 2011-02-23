@@ -11,4 +11,5 @@ fromNumberToRoman number
 	| number < 50 = "XL" ++ fromNumberToRoman(number-40)
 	| number < 90 = "L" ++ fromNumberToRoman(number-50)
 	| number < 100 = "XC" ++ fromNumberToRoman(number-90)
-	| number >= 100 = "C" ++ fromNumberToRoman(number-100)
+	| number < 400 = "C" ++ fromNumberToRoman(number-100)
+	| number >= 400 = "CD" ++ fromNumberToRoman(number-400)
