@@ -43,11 +43,11 @@ testConversionOf39= TestCase $ assertEqual
   "Should get XXXIX from number 39" "XXXIX" ( fromNumberToRoman 39)
 
 testConversionOf49= TestCase $ assertEqual 
-  "Should get ILIX from number 49" "ILIX" ( fromNumberToRoman 49)
+  "Should get XLIX from number 49" "XLIX" ( fromNumberToRoman 49)
 
 testConversionOf89= TestCase $ assertEqual 
   "Should get LXXXIX from number 89" "LXXXIX" ( fromNumberToRoman 89)
 
 main = runTestTT $ TestList [testConversionOf1, testConversionOf2, testConversionOf3, testConversionOf4, testConversionOf5,
 							 testConversionOf7, testConversionOf9, testConversionOf12, testConversionOf14, testConversionOf39,
-							 testConversionOf41, testConversionOf53, testConversionOf95]
+							 testConversionOf41, testConversionOf49, testConversionOf53, testConversionOf89, testConversionOf95]
