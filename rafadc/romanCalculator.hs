@@ -21,7 +21,7 @@ fromRomanToNumber roman
 	| roman == [] = 0
 	| roman == "IV" = 4
 	| roman == "IX" = 9
-	| roman == "X" = 10
+	| head roman == 'X' = 10 + fromRomanToNumber (tail roman)
 	| head roman == 'V' = 5 + fromRomanToNumber (tail roman)
 	| head roman == 'I' = 1 + fromRomanToNumber (tail roman)
 
