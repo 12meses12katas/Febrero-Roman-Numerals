@@ -13,7 +13,8 @@ fromNumberToRoman number
 	| number < 100 = "XC" ++ fromNumberToRoman(number-90)
 	| number < 400 = "C" ++ fromNumberToRoman(number-100)
 	| number < 500 = "CD" ++ fromNumberToRoman(number-400)
-	| number < 1000 = "D" ++ fromNumberToRoman(number-500)
+	| number < 900 = "D" ++ fromNumberToRoman(number-500)
+	| number < 1000 = "CM" ++ fromNumberToRoman(number-900)
 	| otherwise = "M" ++ fromNumberToRoman(number-1000)
 
 fromRomanToNumber :: String -> Int
