@@ -28,4 +28,7 @@ testsForV = TestList [testConversionOfV, testConversionOfVIII]
 testConversionOfIX = TestCase $ assertEqual 
   "Should get 9 from roman IX" 9 ( fromRomanToNumber "IX")
 
+testConversionOfX = TestCase $ assertEqual 
+  "Should get 10 from roman X" 10 ( fromRomanToNumber "X")
+
 main = runTestTT $ TestList [testsForI, testConversionOfIV, testsForV, testConversionOfIX]
