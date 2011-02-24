@@ -17,4 +17,8 @@ describe "romans" do
   it "should be IV when number is 4" do
     4.to_roman.should == "IV"
   end
+  
+  it "should be V when number is 5" do
+    5.to_roman.should == "V"
+  end
 end
