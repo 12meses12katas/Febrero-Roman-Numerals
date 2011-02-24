@@ -4,8 +4,10 @@ end
 
 class Fixnum
   def to_roman
-    return RomanNumbers::I if self==1
-    return RomanNumbers::I + RomanNumbers::I if self==2
-    return RomanNumbers::I + RomanNumbers::I + RomanNumbers::I
+    roman = ""
+    self.times do
+      roman << RomanNumbers::I
+    end
+    roman
   end
 end
