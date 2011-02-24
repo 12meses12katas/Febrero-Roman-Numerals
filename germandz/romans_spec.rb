@@ -9,4 +9,8 @@ describe "romans" do
   it "should be II when number is 2" do
     2.to_roman.should == "II"
   end
+  
+  it "should be III when number is 3" do
+    3.to_roman.should == "III"
+  end
 end
