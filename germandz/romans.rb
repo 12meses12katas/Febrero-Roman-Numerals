@@ -1,10 +1,14 @@
 class RomanNumbers
   I = "I"
+  V = "V"
 end
 
 class Fixnum
   def to_roman
-    return "IV" if self==4
-    RomanNumbers::I * self
+    roman = ""
+    q,r = self.divmod 4
+    roman << RomanNumbers::I * (q-r).abs
+    roman << RomanNumbers::V if q>0
+    roman
   end
 end
