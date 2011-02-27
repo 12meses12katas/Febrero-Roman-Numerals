@@ -56,7 +56,17 @@ public class RomanNumeral {
 				prev = act;
 			}
 			int remainder = i;
+			int cont = 0;
 			while (remainder > 0) {
+				cont ++;
+				if (cont > 3) {
+					romanNumber = dec2roman.get(prev);
+					romanNumber += dec2roman.get(act);
+					
+					remainder = i - act + prev;
+					romanNumber += dig2roman(remainder);
+					break;
+				}
 				romanNumber += dec2roman.get(prev);
 				remainder -= prev;
 			}
