@@ -35,6 +35,12 @@ class RomanNumerals {
         'I'     => 1,
     );
 
+    /**
+     * Convert an arabic number to roman.
+     *
+     * @param int $arabic
+     * @return string
+     */
     function arabicToRoman($arabic)
     {
         if ($arabic > 3000) return '';
@@ -48,6 +54,10 @@ class RomanNumerals {
         return $roman;
     }
 
+    /**
+     * @param int $value
+     * @return array
+     */
     protected function getSymbolAndValue($value)
     {
         foreach (self::$equivalences as $roman => $arabic) {
@@ -57,6 +67,12 @@ class RomanNumerals {
         }
     }
 
+    /**
+     * Convert a roman number to arabic.
+     *
+     * @param string $roman
+     * @return int
+     */
     function romanToArabic($roman)
     {
         $arabic = 0;
@@ -69,6 +85,11 @@ class RomanNumerals {
         return $arabic;
     }
 
+    /**
+     *
+     * @param string $roman
+     * @return int
+     */
     protected function getCurrent($roman)
     {
         $currentOne = substr($roman, 0, 1);
@@ -76,5 +97,36 @@ class RomanNumerals {
         return (isset(self::$equivalences[$currentTwo])) ? $currentTwo : $currentOne;
     }
 
+    /**
+     * Recursive solution for arabicToRoman
+     *
+     * @param string $arabic
+     * @return int
+     */
+    function arabicToRomanRecursive($arabic)
+    {
+        if ($arabic > 3000) return '';
+        if ($arabic <= 0)   return '';
+
+        list ($symbol, $value) = $this->getSymbolAndValue($arabic);
+
+        return $symbol . $this->arabicToRomanRecursive($arabic - $value);
+    }
+
+    /**
+     * Recursive solution for romanToArabic
+     *
+     * @param int $roman
+     * @return string
+     */
+    function romanToArabicRecursive($roman)
+    {
+        if (!$roman) return 0;
+
+        $current    = $this->getCurrent($roman);
+        $roman      = substr($roman, strlen($current));
+
+        return self::$equivalences[$current] + $this->romanToArabicRecursive($roman);
+    }
 }
 ?>

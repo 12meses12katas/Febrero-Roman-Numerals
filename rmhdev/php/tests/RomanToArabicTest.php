@@ -66,5 +66,15 @@ class RomanToArabicTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $rn->romanToArabic($actual));
     }
 
+    /**
+     * @dataProvider testProvider
+     */
+    function test_roman_to_arabic_recursive($expected, $actual) {
+
+        $rn = new RomanNumerals();
+
+        $this->assertEquals($expected, $rn->romanToArabicRecursive($actual));
+    }
+
 }
 ?>
