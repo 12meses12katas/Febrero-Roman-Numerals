@@ -33,6 +33,7 @@ class RomanNumerals:
     def roman2Nums(self, roman):
         romanValues = ('M', 'D', 'C', 'L', 'X', 'V', 'I')
         romanKeys = (1000, 500, 100, 50, 10, 5, 1)
+
         out = 0
 
         for i in range(len(roman)):
@@ -43,4 +44,5 @@ class RomanNumerals:
                 if nextvalue > value:
                     value *= -1
             out += value
+
         return out
