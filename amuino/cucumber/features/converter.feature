@@ -25,6 +25,18 @@ Característica: Convertir entre entero decimal y romano
 		    | 1999          | MCMXCIX      |
 		 	| 3999          | MMMCMXCIX    |
 		
+	Esquema del escenario: numeros enteros no convertibles devuelven nil
+		Dado que <decimal> es un numero no convertible a romano
+		Cuando convierto a romano
+		Entonces el resultado romano es nil
+		
+		Ejemplos:
+			| decimal |
+			| -10     |
+			| 0       |
+			| 4000    |
+			| 4100    |
+		
 	Esquema del escenario: convertir de romano a entero
 		Dado que el número romano es <valor romano>
 		Cuando convierto a entero
@@ -46,4 +58,17 @@ Característica: Convertir entre entero decimal y romano
 		    | 1999          | MCMXCIX      |
 		 	| 3999          | MMMCMXCIX    |
 		
-	
+	Esquema del escenario: numeros romanos inválidos devuelven nil
+		Dado que el número romano es <valor romano>
+		Cuando convierto a entero
+		Entonces el resultado entero es nil
+		
+		Ejemplos:
+			| valor romano |
+			| IIII         |
+			| VIV          |
+			|              |
+			| IA           |
+			| HOLA         |
+			| i            |
+			| v            |

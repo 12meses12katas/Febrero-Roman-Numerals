@@ -28,4 +28,4 @@ class Roman():
         number = number % 5
 
         number_roman = ("D" * D) + ("C" * C) + ("L" * L) + ("X" * X) + ("V" * V) + ("I" * number)
-        return number_roman.replace("CCCC", "CD").replace("XXXX", "XL").replace("LXXXX", "XC").replace("VIIII","IX").replace("IIII","IV")
+        return number_roman.replace("CCCC", "CD").replace("LXXXX", "XC").replace("XXXX", "XL").replace("VIIII","IX").replace("IIII","IV")
