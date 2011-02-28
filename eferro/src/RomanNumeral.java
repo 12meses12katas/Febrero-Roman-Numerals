@@ -40,8 +40,24 @@ public class RomanNumeral {
 		 
 	 }
 	
-	 
-	public String dig2roman(int i) {
+	public int extractOnes(int i){
+		return i % 10;
+	}
+	public int extractTens(int i){
+		return (i%100)/10;
+	}
+	public int extractHundreds(int i){
+		return (i%1000)/100;
+	}
+	public int extractThousands(int i){
+		return (i%10000)/1000;
+	}
+	
+	public String part2roman(int i){
+		
+		if (i == 0){
+			return new String("");
+		}
 		String romanNumber = dec2roman.get(i);
 		
 		if (romanNumber == null) {
@@ -55,6 +71,10 @@ public class RomanNumeral {
 				}
 				prev = act;
 			}
+			System.out.println("Initial = "+ i);
+			System.out.println("Prev = "+ prev + " Act = " + act);
+			System.out.println("------------");
+			
 			int remainder = i;
 			int cont = 0;
 			while (remainder > 0) {
@@ -64,13 +84,23 @@ public class RomanNumeral {
 					romanNumber += dec2roman.get(act);
 					
 					remainder = i - act + prev;
-					romanNumber += dig2roman(remainder);
+					romanNumber += part2roman(remainder);
 					break;
 				}
 				romanNumber += dec2roman.get(prev);
 				remainder -= prev;
 			}
 		}
+		return romanNumber;
+	}
+	
+	
+	public String number2roman(int i) {
+		String romanNumber = part2roman(extractThousands(i)*1000) +
+			part2roman(extractHundreds(i)*100) +
+			part2roman(extractTens(i)*10) + 
+			part2roman(extractOnes(i));
+		
 		return romanNumber;
 	}
 

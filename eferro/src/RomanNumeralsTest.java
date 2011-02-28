@@ -25,35 +25,43 @@ public class RomanNumeralsTest {
 	
 	@Test
 	public void testBasicConversions() {
-		assertEquals("I", romanNumeral.dig2roman(1));
-		assertEquals("V", romanNumeral.dig2roman(5));
-		assertEquals("X", romanNumeral.dig2roman(10));
-		assertEquals("L", romanNumeral.dig2roman(50));
-		assertEquals("C", romanNumeral.dig2roman(100));
-		assertEquals("D", romanNumeral.dig2roman(500));
-		assertEquals("M", romanNumeral.dig2roman(1000));
+		assertEquals("I", romanNumeral.number2roman(1));
+		assertEquals("V", romanNumeral.number2roman(5));
+		assertEquals("X", romanNumeral.number2roman(10));
+		assertEquals("L", romanNumeral.number2roman(50));
+		assertEquals("C", romanNumeral.number2roman(100));
+		assertEquals("D", romanNumeral.number2roman(500));
+		System.out.println("Salida 1000 " + romanNumeral.number2roman(1000));
 		
+		assertEquals("M", romanNumeral.number2roman(1000));
 	}
 	
 	@Test
 	public void testRepetitionConversions(){
-		assertEquals("II", romanNumeral.dig2roman(2));
-		assertEquals("III", romanNumeral.dig2roman(3));
+		assertEquals("II", romanNumeral.number2roman(2));
+		assertEquals("III", romanNumeral.number2roman(3));
 		
-		assertEquals("XX", romanNumeral.dig2roman(20));
-		assertEquals("XXX", romanNumeral.dig2roman(30));
+		assertEquals("XX", romanNumeral.number2roman(20));
+		assertEquals("XXX", romanNumeral.number2roman(30));
 		
 	}
 	
 	@Test
 	public void testSubstractions(){
-		assertEquals("IV", romanNumeral.dig2roman(4));
-		assertEquals("XL", romanNumeral.dig2roman(40));
+		assertEquals("IV", romanNumeral.number2roman(4));
+		assertEquals("XL", romanNumeral.number2roman(40));
 	}
 
 	@Test
 	public void testNotExactsSubstractions(){
-		assertEquals("XLV", romanNumeral.dig2roman(45));
+		assertEquals("XLV", romanNumeral.number2roman(45));
+	}
+	
+	@Test
+	public void testComplexCases(){
+		assertEquals("XC", romanNumeral.number2roman(90));
+		assertEquals("XCIX", romanNumeral.number2roman(99));
+		assertEquals("MMIII", romanNumeral.number2roman(2003));
 		
 	}
 }
