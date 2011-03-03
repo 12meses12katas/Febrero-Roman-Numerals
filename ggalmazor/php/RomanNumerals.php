@@ -43,6 +43,10 @@ class RomanNumerals {
 
   protected function getNumerals() {
     $numerals = $this->additiveNumerals + $this->substractiveNumerals;
+    return $this->orderByDescendingNumerals($numerals);
+  }
+
+  protected function orderByDescendingNumerals($numerals) {
     krsort($numerals);
     return $numerals;
   }
