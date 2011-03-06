@@ -27,7 +27,9 @@ class String
   end 
   
   def roman_number_without_the_first(roman)
-    self[roman.size,self.size-1]
+    
+    self[roman.size,self.size-2]
+    
   end
 
 end
