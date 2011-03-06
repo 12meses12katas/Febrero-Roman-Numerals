@@ -24,6 +24,7 @@ class String
         return arabic + roman_number_without_the_first(roman).to_arabic
       end			
     end	
+/bin/bash: end: command not found
   end 
   
   def roman_number_without_the_first(roman)
