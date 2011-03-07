@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-class RomanNumeralsParser:
+class NumericToRomanParser:
 
     def __init__(self):
         self.rosettaStone = {

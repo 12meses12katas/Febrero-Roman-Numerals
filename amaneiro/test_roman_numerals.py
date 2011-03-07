@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 import unittest
-from roman_numerals import RomanNumeralsParser
+from roman_numerals import NumericToRomanParser
 
-class RomanNumeralsParserTestCase(unittest.TestCase):
+class NumericToRomanParserTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.parser = RomanNumeralsParser()
+        self.parser = NumericToRomanParser()
 
     def testMainSymbols(self):
         self.assertEqual(self.parser.getNumeralNumber(1), 'I')
