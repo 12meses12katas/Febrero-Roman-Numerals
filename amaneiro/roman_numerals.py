@@ -13,20 +13,21 @@ class NumericToRomanParser:
             1000:'M'
             }
 
-    def getNumeralNumber(self, number):
+    def getRomanNumber(self, number):
         if (number in self.rosettaStone):
             return self.rosettaStone[number]
         elif number > 1000:
-            return 'M'+self.getNumeralNumber(number-1000)
+            return 'M'+self.getRomanNumber(number-1000)
         elif number > 500:
-            return 'D'+self.getNumeralNumber(number-500)
+            return 'D'+self.getRomanNumber(number-500)
         elif number > 100:
-            return 'C'+self.getNumeralNumber(number-100)
+            return 'C'+self.getRomanNumber(number-100)
         elif number > 50:
-            return 'L'+self.getNumeralNumber(number-50)
+            return 'L'+self.getRomanNumber(number-50)
         elif number > 10:
-            return 'X'*(number/10)+self.getNumeralNumber(number%10)
+            return 'X'*(number/10)+self.getRomanNumber(number%10)
         elif number > 5:
             return 'V'+'I'*(number-5)
         else:
             return 'I'*number
+
