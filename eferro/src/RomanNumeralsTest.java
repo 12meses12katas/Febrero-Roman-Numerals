@@ -31,13 +31,13 @@ public class RomanNumeralsTest {
 		assertEquals("L", romanNumeral.number2roman(50));
 		assertEquals("C", romanNumeral.number2roman(100));
 		assertEquals("D", romanNumeral.number2roman(500));
-		System.out.println("Salida 1000 " + romanNumeral.number2roman(1000));
 		
 		assertEquals("M", romanNumeral.number2roman(1000));
 	}
 	
 	@Test
 	public void testRepetitionConversions(){
+		
 		assertEquals("II", romanNumeral.number2roman(2));
 		assertEquals("III", romanNumeral.number2roman(3));
 		
@@ -59,9 +59,16 @@ public class RomanNumeralsTest {
 	
 	@Test
 	public void testComplexCases(){
+		assertEquals("VII", romanNumeral.number2roman(7));
+		
 		assertEquals("XC", romanNumeral.number2roman(90));
 		assertEquals("XCIX", romanNumeral.number2roman(99));
 		assertEquals("MMIII", romanNumeral.number2roman(2003));
+		
+		assertEquals("XIV", romanNumeral.number2roman(14));
+		assertEquals("MCMXCIX", romanNumeral.number2roman(1999));
+		assertEquals("MMXI", romanNumeral.number2roman(2011));
+		assertEquals("CDLXVII", romanNumeral.number2roman(467));
 		
 	}
 }
