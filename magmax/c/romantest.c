@@ -8,30 +8,29 @@
 # define NULL 0
 #endif
 
-static int test_one(parameters_t* parameters)
+
+static int check (int arabian, char* expected)
 {
   char* roman;
   int result;
 
-  roman = to_roman(1);
+  roman = to_roman(arabian);
 
-  result = strcmp ("I", roman);
+  result = strcmp (expected, roman);
 
   free_roman (roman);
   return result;
+
+}
+
+static int test_one(parameters_t* parameters)
+{
+  return check (1, "I");
 }
 
 static int test_two(parameters_t* parameters)
 {
-  char* roman;
-  int result;
-
-  roman = to_roman(2);
-
-  result = strcmp ("II", roman);
-
-  free_roman (roman);
-  return result;
+  return check (2, "II");
 }
 
 
