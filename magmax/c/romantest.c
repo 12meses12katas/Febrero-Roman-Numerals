@@ -33,6 +33,16 @@ static int test_two(parameters_t* parameters)
   return check (2, "II");
 }
 
+static int test_three(parameters_t* parameters)
+{
+  return check (3, "III");
+}
+
+static int test_four(parameters_t* parameters)
+{
+  return check (4, "IV");
+}
+
 
 /* Funciones genéricas para las pruebas */
 
@@ -50,12 +60,14 @@ static void setTest ( test_s* test, PF_Test function, char* description)
 test_s* getTests ()
 {
   test_s* tests;
-  int test_number = 2; // EDIT
+  int test_number = 4; // EDIT
   tests = calloc ( test_number+1, sizeof( test_s ) );
 
   // fill tests here:
   setTest ( &tests[0], test_one, "1");
   setTest ( &tests[1], test_two, "2");
+  setTest ( &tests[2], test_three, "3");
+  setTest ( &tests[3], test_four, "4");
   // test end.
 
   setTest ( &tests[test_number], NULL, "");
