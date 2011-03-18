@@ -49,6 +49,12 @@ static int test_five(parameters_t* parameters)
 }
 
 
+static int test_six(parameters_t* parameters)
+{
+  return check (6, "VI");
+}
+
+
 /* Funciones genéricas para las pruebas */
 
 static void setTest ( test_s* test, PF_Test function, char* description)
@@ -65,7 +71,7 @@ static void setTest ( test_s* test, PF_Test function, char* description)
 test_s* getTests ()
 {
   test_s* tests;
-  int test_number = 5; // EDIT
+  int test_number = 6; // EDIT
   tests = calloc ( test_number+1, sizeof( test_s ) );
 
   // fill tests here:
@@ -74,6 +80,7 @@ test_s* getTests ()
   setTest ( &tests[2], test_three, "3");
   setTest ( &tests[3], test_four, "4");
   setTest ( &tests[4], test_five, "5");
+  setTest ( &tests[5], test_six, "6");
   // test end.
 
   setTest ( &tests[test_number], NULL, "");
