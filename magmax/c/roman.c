@@ -6,6 +6,9 @@ char* to_roman (int i)
 {
   char* result = calloc ( i+1, 1 );
 
+  if (i == 5)
+    return strdup ( "V" );
+
   if (i == 4)
     return strdup ( "IV" );
 
