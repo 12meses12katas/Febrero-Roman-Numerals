@@ -4,7 +4,9 @@
 
 char* to_roman (int i)
 {
-  return strdup ("I");
+  char* result = calloc ( i+1, 1 );
+  memset (result, 'I', i);
+  return result;
 }
 
 void  free_roman (char* roman)
