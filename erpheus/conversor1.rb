@@ -1,4 +1,7 @@
-def to_roman (numero)
+class String
+
+def to_roman ()
+  numero=self
   
   #database
   none=[]
@@ -31,7 +34,8 @@ def to_roman (numero)
    return resultado
 end
 
-def to_arabic (numero)
+def to_arabic ()
+  numero=self
   correspondencia=[["CM",900],["CD",400],["XC",90],["XL",40],["IX",9],["IV",4],["M",1000],["D",500],["C",100],["L",50],["X",10],["V",5],["I",1]]
   numero=numero.upcase
   resultado=0
@@ -44,13 +48,15 @@ def to_arabic (numero)
   return resultado.to_s
 end
 
+end
+
 answer=""
 puts "Enter any number < 3999 or a roman number or exit"
 while answer!="exit"
   answer=gets.chomp
   if answer.to_i.to_s==answer
-    puts to_roman(answer)
+    puts answer.to_roman
   elsif answer!="exit"
-    puts to_arabic(answer)
+    puts answer.to_arabic
   end
 end
