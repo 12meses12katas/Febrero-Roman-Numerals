@@ -26,3 +26,16 @@ class Fixnum
     ary.reverse.map{ |num_and_index| RomanNumber.chain_chars(num_and_index[0], num_and_index[1]) }.join
   end
 end
+
+class String
+  def to_arabic
+    thousands = match(/(^M+)/)[0] rescue ''
+    hundreds = gsub(/^#{thousands}/, '').match(/((C|D)[^X|^L]+)|^C|^D/)[0] rescue ''
+    tens = gsub(/^#{thousands+hundreds}/, '').match(/((X|L)[^I|^V]+)|^X|^L/)[0] rescue ''
+    ones = gsub(/^#{thousands+hundreds+tens}/, '') 
+    res = thousands.length * 1000
+    res += hundreds=='CD' ? 400 : hundreds=='CM' ? 900 : hundreds.count('C')*100 + hundreds.count('D')*500
+    res += tens=='XL' ? 40 : tens=='XC' ? 90 : tens.count('X')*10 + tens.count('L')*50
+    res += ones=='IV' ? 4 : ones=='IX' ? 9 : ones.count('I') + ones.count('V')*5
+  end
+end
