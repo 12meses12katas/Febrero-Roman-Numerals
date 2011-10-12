@@ -1,7 +1,9 @@
 module RomanNumerals
   
+  class RomanNumberError < StandardError
+  end
+  
   MAX = 3000
-  VALID_CHARS = [ 'I', 'V', 'X', 'L', 'C', 'D', 'M' ]
   I2R = {
        0=>'',
        1=>'I',
@@ -35,6 +37,16 @@ module RomanNumerals
     2000=>'MM',
     3000=>'MMM'
   }
+
+  R2I={
+    'M'=>1000,
+    'D'=>500,
+    'C'=>100,
+    'L'=>50,
+    'X'=>10,
+    'V'=>5,
+    'I'=>1
+  }
 end
 
 
@@ -42,22 +54,19 @@ class Fixnum
   
   def to_roman
     
-    fail( "Ivalid number" ) unless( self > 0 && self <= RomanNumbers::MAX )  
+    raise RomanNumerals::RomanNumberError.new( 'Ivalid number' ) unless( self > 0 && self <= RomanNumerals::MAX )  
 
     value       = self
     roman_value = ""
     
-    thousans    =  value    / 1000
-    value       -= thousans * 1000  
-    roman_value << RomanNumerals::I2R[thousans * 1000]
-         
-    hundreds    =  value    / 100
-    value       -= hundreds * 100
-    roman_value << RomanNumerals::I2R[hundreds * 100]
+    [1000, 100, 10].each do |divisor|
     
-    tens        =  value / 10
-    value       -= tens  * 10
-    roman_value << RomanNumerals::I2R[tens  * 10]
+      y     = value/divisor
+      r     = y * divisor
+      value -= r
+      roman_value << RomanNumerals::I2R[r]
+    end
+
     roman_value << RomanNumerals::I2R[value % 10]
   end
 end
@@ -67,10 +76,21 @@ class String
   
   def to_arabic
     
-    fail( "String is empty" ) if empty?
+    raise RomanNumerals::RomanNumberError.new( 'String is empty' ) if empty?
+
+    previous_value = 1001
+    final_value    = 0
     
-    chars.each { |char| fail( "String is not a roman number" ) unless RomanNumerals::VALID_CHARS.include?( char.upcase ) }
+    chars.each do |character|
+
+      raise RomanNumerals::RomanNumberError.new( 'This string is not a roman number' ) unless RomanNumerals::R2I.keys.include?( character )
+
+      current_value = RomanNumerals::R2I[character]
+      final_value   += (previous_value < current_value) ? (current_value - previous_value*2) : current_value
+      
+      previous_value = current_value
+    end
     
-    fail( "Not implemented... yet" )
+    final_value
   end
 end

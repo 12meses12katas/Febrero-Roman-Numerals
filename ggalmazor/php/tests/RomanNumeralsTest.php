@@ -68,6 +68,6 @@ class RomanNumeralsTest extends PHPUnit_Framework_TestCase {
   public function testWontConvertRomansBiggerThanMMM() {
     $this->setExpectedException("Exception");
     $this->rn->romanToInteger("MMMI");
-  }
-  
+  } 
+
 }

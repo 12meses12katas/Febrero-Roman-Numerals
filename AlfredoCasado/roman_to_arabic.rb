@@ -23,11 +23,13 @@ class String
         return arabic if roman == roman_number_to_convert
         return arabic + roman_number_without_the_first(roman).to_arabic
       end			
-    end	
+    end
   end 
   
   def roman_number_without_the_first(roman)
+    
     self[roman.size,self.size-1]
+    
   end
 
 end

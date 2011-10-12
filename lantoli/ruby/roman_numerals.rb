@@ -25,7 +25,7 @@ class String
         roman_candidate += arabic
       end
     end
-    self == roman_candidate.to_roman ? roman_candidate : nil
+    return roman_candidate if self == roman_candidate.to_roman
   end
 
 end
